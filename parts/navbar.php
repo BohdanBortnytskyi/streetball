@@ -78,7 +78,7 @@
       </li>
 
       <li class="nav-item">
-        <a class="nav-link" href="#">Еще какой-то пункт</a>йцуйцуйц
+        <a class="nav-link" href="#">Еще какой-то пункт</a>
       </li>
 
     </ul>

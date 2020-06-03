@@ -71,13 +71,13 @@
                         <div class="form-group row align-items-center">
                           <label class="col-3">Имя</label>
                           <div class="col">
-                            <input type="text" placeholder="Имя" value="Bobby" name="profile-first-name" class="form-control" required />
+                            <input type="text" placeholder="Имя" name="profile-first-name" class="form-control" required />
                           </div>
                         </div>
                         <div class="form-group row align-items-center">
                           <label class="col-3">Фамилия</label>
                           <div class="col">
-                            <input type="text" placeholder="Фамилия" value="Jackson" name="profile-last-name" class="form-control" required />
+                            <input type="text" placeholder="Фамилия" name="profile-last-name" class="form-control" required />
                           </div>
                         </div>
                         <div class="form-group row align-items-center">
@@ -89,7 +89,7 @@
                         <div class="form-group row align-items-center">
                           <label class="col-3">Моб. телефон</label>
                           <div class="col">
-                            <input type="tel" placeholder="Ваш номер моб. телефона" name="profile-tel" class="form-control" required />
+                            <input type="tel" placeholder="+38 0XX XXX-XX-XX" name="profile-tel" class="form-control" required />
                           </div>
                         </div>
                         <div class="form-group row align-items-center">
@@ -101,8 +101,8 @@
                         <div class="form-group row align-items-center">
                           <label class="col-3">Пол</label>
                           <div class="col-3">
-                            <select class="form-control" name="profile-sex">
-                              <option value="none" selected>Ваш пол</option>
+                            <select class="form-control" name="profile-gender">
+                              <option value="none" selected disabled>Ваш пол</option>
                               <option value="m">Мужчина</option>
                               <option value="w">Женщина</option>
                             </select>
@@ -155,7 +155,7 @@
                         <div class="form-group row align-items-center">
                           <label class="col-3">Telegram</label>
                           <div class="col">
-                            <input type="text" placeholder="Аккаунт telegram" name="profile-tg" class="form-control" />
+                            <input type="text" placeholder="@username" name="profile-tg" class="form-control" />
                           </div>
                         </div>
                         <div class="row justify-content-end">

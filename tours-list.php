@@ -32,22 +32,47 @@
         <div class="container">
           <div class="row justify-content-center">
             <div class="col-12 m-2">
-              <div class="card card-task">
-                <div class="card-body">
-                  <div class="card-title">
-                    <a href="#">
-                      <h6 data-filter-by="text">Khimik Streetball Party 10</h6>
-                    </a>
-                    <span class="text-small">30.05.2020</span>
-                    <span class="text-small">Южный</span>
-                  </div>
-                  <div class="card-meta">
-                    <div class="d-flex align-items-center">
-                      <span>Редактировать/удалить</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              <table class="table">
+                <thead class="thead-dark">
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Название</th>
+                    <th scope="col">Начало</th>
+                    <th scope="col">Турниров</th>
+                    <th scope="col">Опции</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>1</td>
+                    <td>УСЛ 3х3 Сезон 2020</td>
+                    <td>30.05.2020</td>
+                    <td>17</td>
+                    <td>
+                      <a href="#" title="Редактировать тур" class="btn btn-info btn-sm">
+                          Изменить
+                      </a>
+                      <button type="button" title="Удалить тур" class="btn btn-danger btn-sm" style="cursor:pointer;">
+                          Удалить
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>1</td>
+                    <td>УСЛ 3х3 Сезон 2020</td>
+                    <td>30.05.2020</td>
+                    <td>17</td>
+                    <td>
+                      <a href="#" title="Редактировать тур" class="btn btn-info btn-sm">
+                          Изменить
+                      </a>
+                      <button type="button" title="Удалить тур" class="btn btn-danger btn-sm" style="cursor:pointer;">
+                          Удалить
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
           </div>
         </div>

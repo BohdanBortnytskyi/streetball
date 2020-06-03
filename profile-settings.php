@@ -1,16 +1,13 @@
 <!doctype html>
-<html lang="en">
+<html lang="ru">
 
-  <head>
-    <meta charset="utf-8">
-    <title>Pipeline Project Management Bootstrap Theme</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="A project management Bootstrap theme by Medium Rare">
-    <link href="assets/img/favicon.ico" rel="icon" type="image/x-icon">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Gothic+A1" rel="stylesheet">
-    <link href="assets/css/theme.css" rel="stylesheet" type="text/css" media="all" />
-  </head>
+  <?php
+    // Конфигурация БД
+    include $_SERVER['DOCUMENT_ROOT'] . '/configs/db.php';
+
+    // Head
+    include $_SERVER['DOCUMENT_ROOT'] . '/parts/header.php';
+  ?>
 
   <body>
 

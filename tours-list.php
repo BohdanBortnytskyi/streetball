@@ -32,8 +32,9 @@
         <div class="container">
           <div class="row justify-content-center">
             <div class="col-12 m-2">
+              <h1>Список туров</h1>
               <table class="table">
-                <thead class="thead-dark">
+                <thead>
                   <tr>
                     <th scope="col">#</th>
                     <th scope="col">Название</th>
@@ -49,7 +50,7 @@
                     <td>30.05.2020</td>
                     <td>17</td>
                     <td>
-                      <a href="#" title="Редактировать тур" class="btn btn-info btn-sm">
+                      <a href="#" title="Редактировать тур" class="btn btn-primary btn-sm">
                           Изменить
                       </a>
                       <button type="button" title="Удалить тур" class="btn btn-danger btn-sm" style="cursor:pointer;">
@@ -63,7 +64,7 @@
                     <td>30.05.2020</td>
                     <td>17</td>
                     <td>
-                      <a href="#" title="Редактировать тур" class="btn btn-info btn-sm">
+                      <a href="#" title="Редактировать тур" class="btn btn-primary btn-sm">
                           Изменить
                       </a>
                       <button type="button" title="Удалить тур" class="btn btn-danger btn-sm" style="cursor:pointer;">

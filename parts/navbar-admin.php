@@ -38,7 +38,7 @@
             </li>
 
             <li class="nav-item">
-              <a class="nav-link" href="#">Создать новый</a>
+              <a class="nav-link" href="tours-new.php">Создать новый</a>
             </li>
 
           </ul>
@@ -53,11 +53,11 @@
           <ul class="nav nav-small flex-column">
 
             <li class="nav-item">
-              <a class="nav-link" href="#">Все турниры</a>
+              <a class="nav-link" href="events-list.php">Все турниры</a>
             </li>
 
             <li class="nav-item">
-              <a class="nav-link" href="#">Создать новый</a>
+              <a class="nav-link" href="events-new.php">Создать новый</a>
             </li>
 
           </ul>

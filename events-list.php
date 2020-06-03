@@ -25,7 +25,7 @@
             <ol class="breadcrumb">
               <li class="breadcrumb-item"><a href="/">Главная</a>
               </li>
-              <li class="breadcrumb-item active" aria-current="page">Список туров</li>
+              <li class="breadcrumb-item active" aria-current="page">Список турниров</li>
             </ol>
           </nav>
         </div>

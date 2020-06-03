@@ -7,6 +7,54 @@
 
     // Head
     include $_SERVER['DOCUMENT_ROOT'] . '/parts/header.php';
+    // После клика на ссылку подтверждения регистрации 
+    if(isset($_GET['u_code'])) {
+    $sql = "SELECT * FROM players WHERE confirm='" . $_GET['u_code'] . "'";
+
+    $result = $conn->query($sql);
+      //Верифириуем игрока
+     if($result->num_rows > 0) {
+     $player = mysqli_fetch_assoc($result); 
+     $sql1 = "UPDATE `players` SET `verified` = '1' WHERE `id` =" . $player['id'];
+     if($connect->query($sql1)) {
+         echo "Игрок верифицирован!";
+       } 
+         // удаление подтверждения почты
+        //$sql2 = "UPDATE `players` SET `confirm` = '' WHERE `id` =" . $user['id'];
+       //if ($conn->query($sql2)) {
+    
+       //}
+
+      }
+   }
+    
+    if(isset($_POST) and $_SERVER["REQUEST_METHOD"] == "POST"){
+    // генерируем пароль
+    $password = md5($_POST['pass']);
+    $u_code = generateRandomString(20);
+
+    $sql2 = "INSERT INTO players (email, password, confirm) VALUES ('" . $_POST["email"] . "', '" . $password . "', '$u_code')";
+    // отправляем ссылку
+    if($connect->query($sql2)) {
+      echo " Если письмо не пришло, перейдите по следующей "
+    ?>
+    <a href="http://streetball.local/resend.php">ссылке</a>   
+    <?php
+        $link = "<a href='http://streetball.local/register.php?u_code=$u_code'>Confirm</a>";
+        mail($_POST['email'], 'Register', $link);
+    }
+
+  }
+
+    function generateRandomString($length = 10) {
+    $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    $charactersLength = strlen($characters);
+    $randomString = '';
+    for ($i = 0; $i < $length; $i++) {
+        $randomString .= $characters[rand(0, $charactersLength - 1)];
+    }
+    return $randomString;
+}
   ?>
 
   <body>
@@ -21,13 +69,13 @@
               <hr>
               <h1 class="h2">Регистрация на платформе</h1>
               <p class="lead">Станьте полноценным участником!</p>
-              <form>
+              <form method="POST">
                 <small>Мы отправим вам письмо для подтверждения email-адреса</small>
                 <div class="form-group">
-                  <input class="form-control" type="email" placeholder="Email-адрес" name="create-account-email" />
+                  <input class="form-control" type="email" placeholder="Email-адрес" name="email">
                 </div>
                 <div class="form-group">
-                  <input class="form-control" type="password" placeholder="Пароль" name="create-account-password" />
+                  <input class="form-control" type="password" placeholder="Пароль" name="pass">
                 </div>
                 <button class="btn btn-lg btn-block btn-primary" role="button" type="submit">
                   Создать профиль

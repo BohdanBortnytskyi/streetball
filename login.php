@@ -7,6 +7,29 @@
 
     // Head
     include $_SERVER['DOCUMENT_ROOT'] . '/parts/header.php';
+
+    if(isset($_POST) and $_SERVER["REQUEST_METHOD"] == "POST"){
+    // генерируем пароль
+    $password = md5($_POST['password']);
+    // проверяем совпадение
+    if(isset($_POST["email"]) && isset($password) && $_POST["email"] != "" && $password != "") {
+      
+    $sql = "SELECT * FROM players WHERE email LIKE '" . $_POST["email"] . "' AND password LIKE '$password'";
+
+    $result = mysqli_query($connect, $sql);
+  
+    $players_number = mysqli_num_rows($result);
+  
+    if($players_number == 1) {
+      $player = mysqli_fetch_assoc($result); 
+      setcookie("player_id",  time() + 3600); //создаем куки
+      echo "авторизирован";     
+
+    } else {
+      echo "<h2>Неверный логин/пароль</h2>";
+    }
+  }
+}
   ?>
 
   <body>
@@ -21,12 +44,12 @@
               <hr>
               <h1 class="h2">Добро пожаловать! &#x1f44b;</h1>
               <p class="lead">Войдите в свой профиль, чтобы продолжить</p>
-              <form>
+              <form method="POST">
                 <div class="form-group">
-                  <input class="form-control" type="email" placeholder="Email-адрес" name="login-email" />
+                  <input class="form-control" type="email" placeholder="Email-адрес" name="email">
                 </div>
                 <div class="form-group">
-                  <input class="form-control" type="password" placeholder="Пароль" name="login-password" />
+                  <input class="form-control" type="password" placeholder="Пароль" name="pass">
                   <div class="text-right">
                     <small><a href="resend.php">Не пришло письмо?</a>
                     </small>

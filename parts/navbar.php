@@ -28,7 +28,7 @@
       </li>
 
       <li class="nav-item">
-        <a class="nav-link" href="#">Календарь турниров</a>
+        <a class="nav-link" href="calendar.php">Календарь турниров</a>
       </li>
 
       <li class="nav-item">

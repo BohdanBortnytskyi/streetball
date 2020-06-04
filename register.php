@@ -17,7 +17,7 @@
      $player = mysqli_fetch_assoc($result); 
      $sql1 = "UPDATE `players` SET `verified` = '1' WHERE `id` =" . $player['id'];
      if($connect->query($sql1)) {
-         echo "Игрок верифицирован!";
+         ("Location: /login.php");
        } 
          // удаление подтверждения почты
         //$sql2 = "UPDATE `players` SET `confirm` = '' WHERE `id` =" . $user['id'];

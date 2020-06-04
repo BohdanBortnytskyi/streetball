@@ -101,6 +101,13 @@
       <hr>
     </div>
   </div>
+  <?php
+  // если вход выполнен
+      if(isset($_COOKIE["player_id"])) {
+        $sql = "SELECT * FROM players WHERE id=" . $_COOKIE["player_id"]; // выбираем из БД вошедшего юзера
+        $result = mysqli_query($connect, $sql); // выполняем запрос
+        $user = mysqli_fetch_assoc($result); // создаем ассоциацию с вошедшим юзером
+  ?>      
   <div class="d-none d-lg-block">
     <div class="dropup">
       <a href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -113,5 +120,10 @@
       </div>
     </div>
   </div>
+<?php
+} else {
+ echo "Пожалуйста авторизируйтесь";
+}
 
+ ?>
 </div>

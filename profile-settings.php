@@ -52,22 +52,22 @@
                 <div class="card-body">
                   <div class="tab-content">
                     <div class="tab-pane fade show active" role="tabpanel" id="profile">
-                      <div class="media mb-4">
-                        <img alt="Image" src="assets/img/avatar-male-4.jpg" class="avatar avatar-lg" />
-                        <div class="media-body ml-3">
-                          <div class="custom-file custom-file-naked d-block mb-1">
-                            <input type="file" class="custom-file-input d-none" id="avatar-file">
-                            <label class="custom-file-label position-relative" for="avatar-file">
-                              <span class="btn btn-primary">
-                                Загрузить фото
-                              </span>
-                            </label>
+                      
+                      <form action="upload.php" method="post" enctype="multipart/form-data">
+                        <div class="media mb-4">
+                          <img alt="Image" src="assets/img/avatar-male-4.jpg" class="avatar avatar-lg" />
+                          <div class="media-body ml-3">
+                            <div class="custom-file custom-file-naked d-block mb-1">
+                              <input type="file" class="custom-file-input d-none" id="avatar-file" name="avatar-file">
+                              <label class="custom-file-label position-relative" for="avatar-file">
+                                <span class="btn btn-primary">
+                                  Загрузить фото
+                                </span>
+                              </label>
+                            </div>
+                            <small>Минимальный размер изображения - 256х256, формат - jpg или png</small>
                           </div>
-                          <small>Минимальный размер изображения - 256х256, формат - jpg или png</small>
                         </div>
-                      </div>
-                      <!--end of avatar-->
-                      <form>
                         <div class="form-group row align-items-center">
                           <label class="col-3">Имя</label>
                           <div class="col">
@@ -130,15 +130,17 @@
                           <label class="col-3">О себе</label>
                           <div class="col">
                             <textarea placeholder="Расскажите немного о себе" name="profile-bio" class="form-control" rows="4"></textarea>
-                            <small>Эта информация будет доступна в вашем публичном профиле</small>
+                            <small>Эта информация, кроме email-адреса и телефона, будет доступна в вашем публичном профиле.</small>
                           </div>
                         </div>
                         <div class="row justify-content-end">
-                          <button type="submit" class="btn btn-primary">Сохранить</button>
+                          <button type="submit" name="submit-info" class="btn btn-primary">Сохранить</button>
                         </div>
                       </form>
+
                     </div>
                     <div class="tab-pane fade" role="tabpanel" id="social">
+                      
                       <form>
                         <div class="form-group row align-items-center">
                           <label class="col-3">Facebook</label>
@@ -162,8 +164,10 @@
                           <button type="submit" class="btn btn-primary">Сохранить</button>
                         </div>
                       </form>
+
                     </div>
                     <div class="tab-pane fade" role="tabpanel" id="password">
+                      
                       <form>
                         <div class="form-group row align-items-center">
                           <label class="col-3">Текущий пароль</label>
@@ -187,6 +191,7 @@
                           <button type="submit" class="btn btn-primary">Сменить пароль</button>
                         </div>
                       </form>
+                      
                     </div>
                   </div>
                 </div>

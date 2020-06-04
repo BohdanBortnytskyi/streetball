@@ -11,7 +11,7 @@
     if(isset($_GET['u_code'])) {
     $sql = "SELECT * FROM players WHERE confirm='" . $_GET['u_code'] . "'";
 
-    $result = $conn->query($sql);
+    $result = $connect->query($sql);
       //Верифириуем игрока
      if($result->num_rows > 0) {
      $player = mysqli_fetch_assoc($result); 

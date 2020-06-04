@@ -10,7 +10,7 @@
 
     if(isset($_POST) and $_SERVER["REQUEST_METHOD"] == "POST"){
     // генерируем пароль
-    $password = md5($_POST['password']);
+    $password = md5($_POST['pass']);
     // проверяем совпадение
     if(isset($_POST["email"]) && isset($password) && $_POST["email"] != "" && $password != "") {
       

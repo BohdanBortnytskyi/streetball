@@ -22,10 +22,44 @@
 
         <div class="container">
           <div class="row justify-content-center">
-            <div class="col-lg-11 col-xl-9">
-              <section class="py-4 py-lg-5">
+            <div class="content-list-body row">
+              <div class="page-header">
                 <h1 class="display-4 mb-3">Панель администратора</h1>
-              </section>
+              </div>
+              <div class="col-lg-6">
+                <div class="card card-project">
+                  <div class="card-body">
+                    <div class="card-title">
+                      <a href="#">
+                        <h5 data-filter-by="text">Зарегистрировано игроков</h5>
+                      </a>
+                    </div>
+                    <div class="card-meta d-flex justify-content-between">
+                      <div class="d-flex align-items-center">
+                        <i class="material-icons mr-1">account_circle</i>
+                        <span class="text-small">1250</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <div class="card card-project">
+                  <div class="card-body">
+                    <div class="card-title">
+                      <a href="#">
+                        <h5 data-filter-by="text">Создано команд</h5>
+                      </a>
+                    </div>
+                    <div class="card-meta d-flex justify-content-between">
+                      <div class="d-flex align-items-center">
+                        <i class="material-icons mr-1">account_circle</i>
+                        <span class="text-small">475</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>

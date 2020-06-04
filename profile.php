@@ -123,9 +123,9 @@
                           </div>
                           <div class="card-title">
                             <a href="#">
-                              <h5 data-filter-by="text">Чебурашки</h5>
+                              <h5 data-filter-by="text">Чебурашки <span class="badge badge-pill badge-success">2500</span></h5>
                             </a>
-                            Рейтинг команды: <span class="badge badge-pill badge-success">2500</span>
+                            <span>Текущая команда</span>
                           </div>
                           <ul class="avatars">
 
@@ -167,9 +167,9 @@
                           </div>
                           <div class="card-title">
                             <a href="#">
-                              <h5 data-filter-by="text">Ромашки</h5>
+                              <h5 data-filter-by="text">Ромашки <span class="badge badge-pill badge-success">4000</span></h5>
                             </a>
-                            Рейтинг команды: <span class="badge badge-pill badge-success">4000</span>
+                            <span>Предыдущая команда</span>
                           </div>
                           <ul class="avatars">
 

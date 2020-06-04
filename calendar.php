@@ -33,7 +33,6 @@
 
         <!-- Блок контента -->
         <div class="container">
-          <!-- <h1>Календарь турниров</h1> -->
           <div class="row justify-content-center">
               <div class="col-12">
                 <div class="row content-list-head m-2">
@@ -54,7 +53,7 @@
                 <div class="card card-task">
                   <div class="card-body">
                     <div class="card-title">
-                      <a href="#">
+                      <a href="events-single.php">
                         <h6 data-filter-by="text">Khimik Streetball Party 10</h6>
                       </a>
                       <span class="text-small">30.05.2020</span>
@@ -72,7 +71,7 @@
                 <div class="card card-task">
                   <div class="card-body">
                     <div class="card-title">
-                      <a href="#">
+                      <a href="events-single.php">
                         <h6 data-filter-by="text">Khimik Streetball Party 10</h6>
                       </a>
                       <span class="text-small">30.05.2020</span>
@@ -90,7 +89,7 @@
                 <div class="card card-task">
                   <div class="card-body">
                     <div class="card-title">
-                      <a href="#">
+                      <a href="events-single.php">
                         <h6 data-filter-by="text">Khimik Streetball Party 10</h6>
                       </a>
                       <span class="text-small">30.05.2020</span>

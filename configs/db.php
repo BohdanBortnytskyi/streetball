@@ -4,7 +4,7 @@
 	$server = "localhost";
 	$username = "root";
 	$password = "";
-	$dbname = "test";
+	$dbname = "streetball";
 
 	$connect = new mysqli($server, $username, $password, $dbname); // объект подключения к БД
 
@@ -12,10 +12,10 @@
 
 	// Проверка связи с БД
 
-	//if($connect) {
-	//echo "Connect";
-	//} else {
-	//echo "DB Connect Failed";
-	//}
+	// if($connect) {
+	// 	echo "Connect";
+	// } else {
+	// 	echo "DB Connect Failed";
+	// }
 
 ?>

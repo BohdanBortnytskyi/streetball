@@ -7,33 +7,6 @@
 
     // Head
     include $_SERVER['DOCUMENT_ROOT'] . '/parts/header.php';
-    // отправляем повторно письмо
-    if(isset($_POST) and $_SERVER["REQUEST_METHOD"] == "POST"){
-
-    $u_code = generateRandomString(20);
-    $sql = "UPDATE players SET confirm = '$u_code' WHERE email='" . $_POST['email'] . "'";
-    $result = $connect->query($sql);
-    if($result > 0) {
-    echo "Вам на почту выслано подтверждение регистрации";
-    $link = "<a href='http://streetball.local/register.php?u_code=$u_code'>Confirm</a>";
-        mail($_POST['email'], 'Register', $link);
-        
-    } 
-    else {
-      echo "Error";
-    }
-
-}
-
-function generateRandomString($length = 10) {
-    $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-    $charactersLength = strlen($characters);
-    $randomString = '';
-    for ($i = 0; $i < $length; $i++) {
-        $randomString .= $characters[rand(0, $charactersLength - 1)];
-    }
-    return $randomString;
-}
   ?>
 
   <body>
@@ -48,9 +21,9 @@ function generateRandomString($length = 10) {
               <hr>
               <h1 class="h2">Повторить отправку</h1>
               <p class="lead">Мы отправим вам ссылку для подтверждения</p>
-              <form method="POST">
+              <form>
                 <div class="form-group">
-                  <input class="form-control" type="email" placeholder="Email-адрес" name="email" />
+                  <input class="form-control" type="email" placeholder="Email-адрес" name="forgot-password-email" />
                 </div>
                 <button class="btn btn-lg btn-block btn-primary" role="button" type="submit">
                   Отправить еще раз

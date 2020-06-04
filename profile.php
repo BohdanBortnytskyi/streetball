@@ -5,6 +5,9 @@
     // Конфигурация БД
     include $_SERVER['DOCUMENT_ROOT'] . '/configs/db.php';
 
+    // подключаем файл настроек сайта
+    include $_SERVER['DOCUMENT_ROOT'] . '/configs/setup.php';
+
     // Head
     include $_SERVER['DOCUMENT_ROOT'] . '/parts/header.php';
   ?>
@@ -46,18 +49,25 @@
         </div>
 
         <!-- Блок контента -->
+          <?php
+          if(isset($_COOKIE["player_id"])) {
+          $sql = "SELECT * FROM players WHERE id=" . $_COOKIE["player_id"];
+          $result = $connect->query($sql);
+          $player = mysqli_fetch_assoc($result); 
+          ?>
+         
         <div class="container">
           <div class="row justify-content-center">
             <div class="col-lg-11 col-xl-10">
               <div class="page-header mb-4">
                 <div class="media">
-                  <img alt="Image" src="assets/img/avatar-male-4.jpg" class="avatar avatar-lg mt-1" />
+                  <img alt="Image" src="assets/img/avatars/<?php echo $player['photo']; ?>" class="avatar avatar-lg mt-1" />
                   <div class="media-body ml-3">
-                    <h1 class="mb-0">Bobby Jackson <span class="badge badge-pill badge-success">3500</span></h1>
+                    <h1 class="mb-0"><?php echo $player['firstName']; ?>&nbsp;<?php echo $player['lastName']; ?><span class="badge badge-pill badge-success"><?php echo $player['rankPoints']; ?></span></h1>
                     <p class="lead">
-                      <a href="#"><img height="24" src="assets/img/facebook.svg"></a>
-                      <a href="#"><img height="24" src="assets/img/instagram.svg"></a>
-                      <a href="#"><img height="24" src="assets/img/telegram.svg"></a>
+                      <a href="<?php echo $player['facebook']; ?>" target="_blank"><img height="24" src="assets/img/facebook.svg" ></a>
+                      <a href="<?php echo $player['instagram']; ?>" target="_blank"><img height="24" src="assets/img/instagram.svg" ></a>
+                      <a href="https://t.me/<?php echo $player['telegram']; ?>" target="_blank"><img height="24" src="assets/img/telegram.svg" ></a>
                     </p>
                     <p class="lead">
                       <table class="table table-sm">
@@ -68,20 +78,25 @@
                             <th scope="col">Возраст</th>
                             <th scope="col">Рост</th>
                             <th scope="col">Вес</th>
+                            <th scope="col">О себе</th>
                           </tr>
                         </thead>
                         <tbody align="center">
                           <tr>
-                            <td>Одесса</td>
-                            <td>Мужчина</td>
-                            <td>25</td>
-                            <td>190</td>
-                            <td>95</td>
-                          </tr>
+                            <td><?php echo $player['city']; ?></td>
+                            <td><?php echo $player['gender']; ?></td>
+                            <td><?php echo $player['age']; ?></td>
+                            <td><?php echo $player['height']; ?></td>
+                            <td><?php echo $player['weight']; ?></td>
+                            <td><?php echo $player['about']; ?></td>
+                            </tr>
+                            <?php
+                            }
+                           ?>
                         </tbody>
                       </table>                      
                     </p>
-                    
+                   
                   </div>
                 </div>
               </div>
@@ -123,9 +138,9 @@
                           </div>
                           <div class="card-title">
                             <a href="#">
-                              <h5 data-filter-by="text">Чебурашки</h5>
+                              <h5 data-filter-by="text">Чебурашки <span class="badge badge-pill badge-success">2500</span></h5>
                             </a>
-                            Рейтинг команды: <span class="badge badge-pill badge-success">2500</span>
+                            <span>Текущая команда</span>
                           </div>
                           <ul class="avatars">
 
@@ -167,9 +182,9 @@
                           </div>
                           <div class="card-title">
                             <a href="#">
-                              <h5 data-filter-by="text">Ромашки</h5>
+                              <h5 data-filter-by="text">Ромашки <span class="badge badge-pill badge-success">4000</span></h5>
                             </a>
-                            Рейтинг команды: <span class="badge badge-pill badge-success">4000</span>
+                            <span>Предыдущая команда</span>
                           </div>
                           <ul class="avatars">
 

@@ -6,7 +6,7 @@
     include $_SERVER['DOCUMENT_ROOT'] . '/configs/db.php';
 
     // Head
-    include $_SERVER['DOCUMENT_ROOT'] . '/parts/header.php';
+    include $_SERVER['DOCUMENT_ROOT'] . '/admin/parts/header.php';
   ?>
 
   <body>
@@ -15,7 +15,7 @@
 
       <?php
         // Главное боковое меню
-        include $_SERVER['DOCUMENT_ROOT'] . '/parts/navbar-admin.php';
+        include $_SERVER['DOCUMENT_ROOT'] . '/admin/parts/navbar-admin.php';
       ?>
 
       <div class="main-container">

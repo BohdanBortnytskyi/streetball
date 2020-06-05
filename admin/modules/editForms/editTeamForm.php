@@ -6,7 +6,7 @@
     include $_SERVER['DOCUMENT_ROOT'] . '/configs/db.php';
 
     // Head
-    include $_SERVER['DOCUMENT_ROOT'] . '/parts/header.php';
+    include $_SERVER['DOCUMENT_ROOT'] . '/admin/parts/header.php';
   ?>
 
   <body>

@@ -5,6 +5,9 @@
     // Конфигурация БД
     include $_SERVER['DOCUMENT_ROOT'] . '/configs/db.php';
 
+    // подключаем файл настроек сайта
+    include $_SERVER['DOCUMENT_ROOT'] . '/configs/setup.php';
+
     // Head
     include $_SERVER['DOCUMENT_ROOT'] . '/parts/header.php';
   ?>

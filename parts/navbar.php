@@ -101,11 +101,18 @@
       <hr>
     </div>
   </div>
+  <?php
+  // если вход выполнен
+      if(isset($_COOKIE["player_id"])) {
+        $sql = "SELECT * FROM players WHERE id=" . $_COOKIE["player_id"]; // выбираем из БД вошедшего игрока
+        $result = mysqli_query($connect, $sql); // выполняем запрос
+        $player = mysqli_fetch_assoc($result); // создаем ассоциацию с вошедшим игроком
+  ?>      
   <div class="d-none d-lg-block">
     <div class="dropup">
       <a href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <img alt="Image" src="assets/img/avatar-male-4.jpg" class="avatar" />
-        <span>Имя Игрока</span>
+        <img alt="Image" src="assets/img/avatars/<?php echo $player['photo']; ?>" class="avatar" />
+        <span><?php echo $player['firstName']; ?>&nbsp;<?php echo $player['lastName']; ?></span>
       </a>
       <div class="dropdown-menu">
         <a href="profile.php" class="dropdown-item">Профиль</a>
@@ -113,5 +120,10 @@
       </div>
     </div>
   </div>
+<?php
+} else {
+ echo "Пожалуйста авторизируйтесь";
+}
 
+ ?>
 </div>

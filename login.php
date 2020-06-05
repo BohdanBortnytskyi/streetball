@@ -5,6 +5,9 @@
     // Конфигурация БД
     include $_SERVER['DOCUMENT_ROOT'] . '/configs/db.php';
 
+    // подключаем файл настроек сайта
+    include $_SERVER['DOCUMENT_ROOT'] . '/configs/setup.php';
+
     // Head
     include $_SERVER['DOCUMENT_ROOT'] . '/parts/header.php';
 
@@ -22,9 +25,8 @@
   
     if($players_number == 1) {
       $player = mysqli_fetch_assoc($result); 
-      setcookie("player_id",  time() + 3600); //создаем куки
-      header("Location: /");     
-
+      setcookie("player_id",  $player["id"], time() + 3600); //создаем куки    
+      header("Location: /"); // переадресация на главную
     } else {
       echo "<h2>Неверный логин/пароль</h2>";
     }

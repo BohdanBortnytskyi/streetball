@@ -77,20 +77,13 @@
                 <li class="nav-item">
                   <a class="nav-link" data-toggle="tab" href="#teams" role="tab" aria-controls="events" aria-selected="false">Команды</a>
                 </li>
+                <li class="nav-item">
+                  <a class="nav-link" data-toggle="tab" href="#results" role="tab" aria-controls="results" aria-selected="false">Результаты</a>
+                </li>
               </ul>
               
               <div class="tab-content">
                 <div class="tab-pane fade show active" id="info" role="tabpanel" data-filter-list="content-list-body">
-                  <!-- <ul class="list-group list-group-flush">
-                    <li class="list-group-item">Время начала</li>
-                    <li class="list-group-item">Место проведения</li>
-                    <li class="list-group-item">Категории участников</li>
-                    <li class="list-group-item">Организационный взнос</li>
-                    <li class="list-group-item">Описание</li>
-                    <li class="list-group-item">Положения</li>
-                    <li class="list-group-item">Вебсайт</li>
-                    <li class="list-group-item">Организатор</li>
-                  </ul> -->
                   <table class="table table-sm">
                       <tbody>
                         <tr>
@@ -247,58 +240,14 @@
                     </div>
 
                   </div>
-                  <!--end of content list-->
                 </div>
+                <div class="tab-pane fade" id="results" role="tabpanel" data-filter-list="content-list-body">
+                  <p>Организатор еще не добавил результаты турнира</p>
+                  <p>
+                    <a href="events-results.php" class="btn btn-primary">Отправить результаты</a>
+                  </p>
                 <!--end of tab-->
               </div>
-              <form class="modal fade" id="team-add-modal" tabindex="-1" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <h5 class="modal-title">Новая команда</h5>
-                      <button type="button" class="close btn btn-round" data-dismiss="modal" aria-label="Close">
-                        <i class="material-icons">close</i>
-                      </button>
-                    </div>
-                    <!--end of modal head-->
-                    <ul class="nav nav-tabs nav-fill" role="tablist">
-                      <li class="nav-item">
-                        <a class="nav-link active" id="team-add-details-tab" data-toggle="tab" href="#team-add-details" role="tab" aria-controls="team-add-details" aria-selected="true">Информация</a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link" id="team-add-members-tab" data-toggle="tab" href="#team-add-members" role="tab" aria-controls="team-add-members" aria-selected="false">Игроки</a>
-                      </li>
-                    </ul>
-                    <div class="modal-body">
-                      <div class="tab-content">
-                        <div class="tab-pane fade show active" id="team-add-details" role="tabpanel">
-                          <div class="form-group row align-items-center">
-                            <label class="col-3">Название</label>
-                            <input class="form-control col" type="text" placeholder="Название команды" name="team-name" required>
-                          </div>
-                          <div class="form-group row">
-                            <label class="col-3">Категория</label>
-                            <select class="form-control col" placeholder="Категория участников" name="category" required>
-                              <option>Мужская</option>
-                              <option>Юношеская</option>
-                              <option>Женская</option>
-                            </select>
-                          </div>
-                        </div>
-                        <div class="tab-pane fade" id="team-add-members" role="tabpanel">
-                          Здесь будет выбор игроков из списка
-                        </div>
-                      </div>
-                    </div>
-                    <!--end of modal body-->
-                    <div class="modal-footer">
-                      <button role="button" class="btn btn-primary" type="submit">
-                        Done
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </form>
             </div>
           </div>
         </div>

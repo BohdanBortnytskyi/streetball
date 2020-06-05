@@ -25,7 +25,7 @@
   
     if($players_number == 1) {
       $player = mysqli_fetch_assoc($result); 
-      setcookie("player_id",  $player["id"], time() + 3600); //создаем куки    
+      setcookie("player_id",  $player["id"], time() + 3600*24); //создаем куки на сутки  
       header("Location: /"); // переадресация на главную
     } else {
       echo "<h2>Неверный логин/пароль</h2>";
@@ -44,7 +44,7 @@
                 <img alt="Streetball Players Platform" height="70" src="assets/img/logo-3x3.png" />
               </a>
               <hr>
-              <h1 class="h2">Добро пожаловать! &#x1f44b;</h1>
+              <h1 class="h2">Добро пожаловать!</h1>
               <p class="lead">Войдите в свой профиль, чтобы продолжить</p>
               <form method="POST">
                 <div class="form-group">

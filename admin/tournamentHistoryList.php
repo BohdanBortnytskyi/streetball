@@ -25,54 +25,56 @@
             <ol class="breadcrumb">
               <li class="breadcrumb-item"><a href="/admin">Главная</a>
               </li>
-              <li class="breadcrumb-item active" aria-current="page">Список туров</li>
+              <li class="breadcrumb-item active" aria-current="page">История турниров</li>
             </ol>
           </nav>
         </div>
         <div class="container">
           <div class="row justify-content-center">
             <div class="col-12 m-2">
-              <h1>Список туров</h1>
+              <h1>История турниров</h1>
               <table class="table">
                 <thead>
                   <tr>
                     <th scope="col">#</th>
                     <th scope="col">Название</th>
-                    <th scope="col">Начало</th>
-                    <th scope="col">Завершение</th>
-                    <th scope="col">Турниров</th>
+                    <th scope="col">Город</th>
+                    <th scope="col">Дата</th>
+                    <th scope="col">Команды</th>
+                    <th scope="col">Турнирная таблица</th>
                     <th scope="col">Опции</th>
                   </tr>
                 </thead>
                 <tbody>
                     <?php
-                        // создаем запрос для получения всех tour
-                        $sql = "SELECT * FROM tours";
+                        // создаем запрос для получения всех events
+                        $sql = "SELECT * FROM tournaments";
                         // заносим в переменную результаты запроса
                         $result = $connect->query($sql);
                         // запускаем цикл, присваиваем переменной row строку из переменной $result
-                        // и пока row не равен NULL выводим данные о tour
+                        // и пока row не равен NULL выводим данные о event
                         while($row = mysqli_fetch_assoc($result)) {
                     ?>
                   <tr>
-                      <td><?php echo $row["id"] ?></td>
-                      <td><?php echo $row["name"] ?></td>
-                      <td><?php echo $row["startDate"] ?></td>
-                      <td><?php echo $row["endDate"] ?></td>
-                      <td><?php echo $row["numTournament"] ?></td>
-                      <!-- <td><?php echo $row["description"] ?></td> -->
-                      <td>
-                          <a href="/admin/modules/editForms/editTourForm.php?id=<?php echo $row['id'] ?>" type="button" class="btn btn-primary btn-sm">
-                              Изменить
-                          </a>
-                          <a href="/admin/modules/delete.php?id=<?php echo $row['id'] ?>&flag=tour" type="button" class="btn btn-danger btn-sm" >
-                              Удалить
-                          </a>
-                      </td>
+                    <td><?php echo $row["id"] ?></td>
+                    <td><?php echo $row["city"] ?></td>
+
+                    <td><?php echo $row["date"] ?></td>
+                    <td><?php echo $row["categoryID"] ?></td>
+                    <td>УСЛ 3х3 2020</td>
+                    <td>
+                        <a href="/admin/modules/editForms/editEventForm.php?id=<?php echo $row['id'] ?>" type="button" class="btn btn-primary btn-sm">
+                            Изменить
+                        </a>
+                        <a href="/admin/modules/delete.php?id=<?php echo $row['id'] ?>&flag=event" type="button" class="btn btn-danger btn-sm" >
+                            Удалить
+                        </a>
+                    </td>
                   </tr>
-                    <?php
-                      }
-                    ?>
+                  <?php
+                    }
+                  ?>
+
                 </tbody>
               </table>
             </div>
@@ -81,7 +83,7 @@
       </div>
     </div>
 
-     <?php
-            // Footer
-            include $_SERVER['DOCUMENT_ROOT'] . '/admin/parts/footer.php';
-          ?>
+    <?php
+      // Footer
+      include $_SERVER['DOCUMENT_ROOT'] . '/admin/parts/footer.php';
+    ?>

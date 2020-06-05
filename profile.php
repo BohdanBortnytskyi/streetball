@@ -50,10 +50,10 @@
 
         <!-- Блок контента -->
           <?php
-          if(isset($_COOKIE["player_id"])) {
-          $sql = "SELECT * FROM players WHERE id=" . $_COOKIE["player_id"];
-          $result = $connect->query($sql);
-          $player = mysqli_fetch_assoc($result); 
+            if(isset($_COOKIE["player_id"])) {
+              $sql = "SELECT * FROM players WHERE id=" . $_COOKIE["player_id"];
+              $result = $connect->query($sql);
+              $player = mysqli_fetch_assoc($result); 
           ?>
          
         <div class="container">

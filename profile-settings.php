@@ -43,7 +43,7 @@
                   <a class="nav-link" id="profile-tab" data-toggle="tab" href="#social" role="tab" aria-controls="profile" aria-selected="false">Социальные сети</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" id="password-tab" data-toggle="tab" href="#password" role="tab" aria-controls="password" aria-selected="false">Пароль</a>
+                  <a class="nav-link" id="password-tab" data-toggle="tab" href="#password" role="tab" aria-controls="password" aria-selected="false">Изменить пароль</a>
                 </li>
               </ul>
             </div>
@@ -52,10 +52,16 @@
                 <div class="card-body">
                   <div class="tab-content">
                     <div class="tab-pane fade show active" role="tabpanel" id="profile">
-                      
-                      <form action="upload.php" method="post" enctype="multipart/form-data">
+                      <?php
+                        if(isset($_COOKIE["player_id"])) {
+                          $sql = "SELECT * FROM players WHERE id=" . $_COOKIE["player_id"]; // выбираем из БД вошедшего игрока
+                          $result = mysqli_query($connect, $sql); // выполняем запрос
+                          $player = mysqli_fetch_assoc($result); // создаем ассоциацию с вошедшим игроком
+                        }
+                      ?>  
+                      <form action="profile-update.php" method="post" enctype="multipart/form-data">
                         <div class="media mb-4">
-                          <img alt="Image" src="assets/img/avatar-male-4.jpg" class="avatar avatar-lg" />
+                          <img alt="Image" src="assets/img/avatars/<?php if($player['photo'] == ""){echo 'noname.png';} else{echo $player['photo'];} ?>" class="avatar avatar-lg" />
                           <div class="media-body ml-3">
                             <div class="custom-file custom-file-naked d-block mb-1">
                               <input type="file" class="custom-file-input d-none" id="avatar-file" name="avatar-file">
@@ -65,71 +71,86 @@
                                 </span>
                               </label>
                             </div>
-                            <small>Минимальный размер изображения - 256х256, формат - jpg или png</small>
+                            <small>
+                              Загрузите ваше реальное фото<br>
+                              Минимальный размер изображения - 256х256, формат - jpg или png
+                            </small>
                           </div>
                         </div>
                         <div class="form-group row align-items-center">
                           <label class="col-3">Имя</label>
                           <div class="col">
-                            <input type="text" placeholder="Имя" name="profile-first-name" class="form-control" required />
+                            <input type="text" placeholder="Имя" name="profile-first-name" class="form-control" value="<?php echo $player['firstName']; ?>" required />
                           </div>
                         </div>
                         <div class="form-group row align-items-center">
                           <label class="col-3">Фамилия</label>
                           <div class="col">
-                            <input type="text" placeholder="Фамилия" name="profile-last-name" class="form-control" required />
+                            <input type="text" placeholder="Фамилия" name="profile-last-name" class="form-control" value="<?php echo $player['lastName']; ?>" required />
                           </div>
                         </div>
                         <div class="form-group row align-items-center">
                           <label class="col-3">Email</label>
                           <div class="col">
-                            <input type="email" placeholder="Введите актуальный email" name="profile-email" class="form-control" required />
+                            <input type="email" placeholder="Введите актуальный email" name="profile-email" class="form-control" value="<?php echo $player['email']; ?>" required />
                           </div>
                         </div>
                         <div class="form-group row align-items-center">
                           <label class="col-3">Моб. телефон</label>
                           <div class="col">
-                            <input type="tel" placeholder="+38 0XX XXX-XX-XX" name="profile-tel" class="form-control" required />
+                            <input type="tel" placeholder="38 0XX XXX-XX-XX" name="profile-tel" class="form-control" value="<?php echo $player['phone']; ?>" required />
                           </div>
                         </div>
                         <div class="form-group row align-items-center">
                           <label class="col-3">Город</label>
                           <div class="col">
-                            <input type="text" placeholder="Город, в котором проживаете" name="profile-location" class="form-control" required />
+                            <input type="text" placeholder="Город, в котором проживаете" name="profile-location" class="form-control" value="<?php echo $player['city']; ?>" required />
                           </div>
                         </div>
                         <div class="form-group row align-items-center">
                           <label class="col-3">Пол</label>
                           <div class="col-3">
-                            <select class="form-control" name="profile-gender">
-                              <option value="none" selected disabled>Ваш пол</option>
-                              <option value="m">Мужчина</option>
-                              <option value="w">Женщина</option>
+                            <select class="form-control" name="profile-gender" required>
+                              <?php 
+                                if($player["gender"] == "") {
+                                  echo "<option value='none' selected>Не указано</option>";
+                                  echo "<option value='m'>Мужчина</option>";
+                                  echo "<option value='w'>Женщина</option>";
+                                }
+                                if($player["gender"] == "m") {
+                                    echo "<option value='" . $player["gender"] . "' selected>Мужчина</option>";
+                                    echo "<option value='w'>Женщина</option>";
+                                } 
+                                if($player["gender"] == "w") {
+                                  echo "<option value='" . $player["gender"] . "' selected>Женщина</option>";
+                                  echo "<option value='m'>Мужчина</option>";
+                                }
+                              ?>
                             </select>
                           </div>
                         </div>
                         <div class="form-group row align-items-center">
                           <label class="col-3">Возраст</label>
                           <div class="col-3">
-                            <input type="number" placeholder="Ваш возраст" name="profile-age" class="form-control" />
+                            <input type="number" placeholder="Ваш возраст" name="profile-age" class="form-control" value="<?php echo $player['age']; ?>" />
                           </div>
                         </div>
                         <div class="form-group row align-items-center">
                           <label class="col-3">Рост</label>
                           <div class="col-3">
-                            <input type="number" placeholder="Ваш рост" name="profile-height" class="form-control" />
+                            <input type="number" placeholder="Ваш рост" name="profile-height" class="form-control" value="<?php echo $player['height']; ?>" />
                           </div>
                         </div>
                         <div class="form-group row align-items-center">
                           <label class="col-3">Вес</label>
                           <div class="col-3">
-                            <input type="number" placeholder="Ваш вес" name="profile-weight" class="form-control" />
+                            <input type="number" placeholder="Ваш вес" name="profile-weight" class="form-control" value="<?php echo $player['weight']; ?>" />
                           </div>
                         </div>
                         <div class="form-group row">
                           <label class="col-3">О себе</label>
                           <div class="col">
-                            <textarea placeholder="Расскажите немного о себе" name="profile-bio" class="form-control" rows="4"></textarea>
+                            <textarea placeholder="Расскажите немного о себе" name="profile-about" class="form-control" rows="4"><?php echo $player['about']; ?></textarea>
                             <small>Эта информация, кроме email-адреса и телефона, будет доступна в вашем публичном профиле.</small>
                           </div>
                         </div>
@@ -141,27 +162,27 @@
                     </div>
                     <div class="tab-pane fade" role="tabpanel" id="social">
                       
-                      <form>
+                      <form action="profile-update.php" method="post">
                         <div class="form-group row align-items-center">
                           <label class="col-3">Facebook</label>
                           <div class="col">
-                            <input type="text" placeholder="Ссылка на страницу facebook" name="profile-fb" class="form-control" />
+                            <input type="text" placeholder="Ссылка на страницу facebook" name="profile-fb" class="form-control" value="<?php echo $player['facebook']; ?>" />
                           </div>
                         </div>
                         <div class="form-group row align-items-center">
                           <label class="col-3">Instagram</label>
                           <div class="col">
-                            <input type="text" placeholder="Ссылка на страницу instagram" name="profile-insta" class="form-control" />
+                            <input type="text" placeholder="Ссылка на страницу instagram" name="profile-insta" class="form-control" value="<?php echo $player['instagram']; ?>" />
                           </div>
                         </div>
                         <div class="form-group row align-items-center">
                           <label class="col-3">Telegram</label>
                           <div class="col">
-                            <input type="text" placeholder="@username" name="profile-tg" class="form-control" />
+                            <input type="text" placeholder="@username" name="profile-tg" class="form-control" value="<?php echo $player['telegram']; ?>" />
                           </div>
                         </div>
                         <div class="row justify-content-end">
-                          <button type="submit" class="btn btn-primary">Сохранить</button>
+                          <button type="submit" class="btn btn-primary" name="submit-social">Сохранить</button>
                         </div>
                       </form>
 

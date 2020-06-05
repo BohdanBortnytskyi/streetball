@@ -1,55 +1,54 @@
 <?php
 	
-	//Загрузка файлов картинок на сервер
-	
-	$target_dir = "assets/img/avatars/";
-	$target_file = $target_dir . basename($_FILES["avatar-file"]["name"]);
-	$uploadOk = 1;
-	$imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
-	
-	// Проверка является ли файл картинкой
-	if(isset($_POST["submit-info"])) {
-	  $check = getimagesize($_FILES["avatar-file"]["tmp_name"]);
-	  if($check !== false) {
-	    //echo "File is an image - " . $check["mime"] . ".";
-	    $uploadOk = 1;
-	  } else {
-	    echo "Файл не является картинкой.";
-	    $uploadOk = 0;
-	  }
+	// Конфигурация БД
+	include $_SERVER['DOCUMENT_ROOT'] . '/configs/db.php';
+
+	// Подключаем обработку загрузки картинок на сервер
+	include $_SERVER['DOCUMENT_ROOT'] . '/upload.php';
+
+	// если отправлен POST-запрос во вкладке Информация
+	if(isset($_POST) and $_SERVER["REQUEST_METHOD"] == "POST" and isset($_POST["submit-info"])) {
+
+		// запрос на поиск юзера в БД 
+		$sql = "SELECT * FROM players WHERE id=" . $_COOKIE["player_id"];
+		$result = $connect->query($sql);
+		$player = mysqli_fetch_assoc($result); 
+
+		// Определяем загружен ли аватар
+		if(basename($_FILES["avatar-file"]["name"]) != "") {
+			$avatar = basename($_FILES["avatar-file"]["name"]);
+		} else {
+			$avatar = $player['photo'];
+		}		
+
+		// изменение данных в БД
+		$sql = "UPDATE players SET firstName='" . $_POST['profile-first-name'] . "', lastName='" . $_POST['profile-last-name'] . "', photo='" . $avatar . "', email='" . $_POST['profile-email'] . "', phone='" . $_POST['profile-tel'] . "', city='" . $_POST['profile-location'] . "', gender='" . $_POST['profile-gender'] . "', age='" . $_POST['profile-age'] . "', height='" . $_POST['profile-height'] . "', weight='" . $_POST['profile-weight'] . "', about='" . $_POST['profile-about'] . "' WHERE id=" . $player['id'];
+ 
+		// если запрос выполнен, выводим сообщение
+		if(mysqli_query($connect, $sql)) {
+			header("Location: /profile-settings.php");
+		} else { // иначе выводим сообщение об ошибке
+		  echo "<h2 style=\"color: red;\">Ошибка: " . mysqli_error($connect) . " </h2>";
+		}
 	}
 
-	// Проверка существует ли уже файл
-	if (file_exists($target_file)) {
-	  echo "Извините, такой файл уже существует.";
-	  $uploadOk = 0;
-	}
+	// если отправлен POST-запрос во вкладке Социальные сети
+	if(isset($_POST) and $_SERVER["REQUEST_METHOD"] == "POST" and isset($_POST["submit-social"])) {
 
-	// Проверка размера файла (max 3mb)
-	if ($_FILES["avatar-file"]["size"] > 3*1048576) {
-	  echo "Извините, файл слишком большой (максимально 3mb).";
-	  $uploadOk = 0;
-	}
+		// запрос на поиск юзера в БД 
+		$sql = "SELECT * FROM players WHERE id=" . $_COOKIE["player_id"];
+		$result = $connect->query($sql);
+		$player = mysqli_fetch_assoc($result); 
 
-	// Разрешить определенные форматы файлов
-	if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
-	&& $imageFileType != "gif" ) {
-	  echo "Извините, только JPG, JPEG, PNG и GIF файлы разрешены для загрузки.";
-	  $uploadOk = 0;
+		// изменение данных в БД
+		$sql = "UPDATE players SET facebook='" . $_POST['profile-fb'] . "', instagram='" . $_POST['profile-insta'] . "', telegram='" . $_POST['profile-tg'] . "' WHERE id=" . $player['id'];
+ 
+		// если запрос выполнен, выводим сообщение
+		if(mysqli_query($connect, $sql)) {
+			header("Location: /profile-settings.php");
+		} else { // иначе выводим сообщение об ошибке
+		  echo "<h2 style=\"color: red;\">Ошибка: " . mysqli_error($connect) . " </h2>";
+		}
 	}
-
-	// Проверка $uploadOk на наличие ошибок
-	if ($uploadOk == 0) {
-	  echo "Sorry, your file was not uploaded.";
-	// если все ок, то загружаем файл
-	} else {
-	  if (move_uploaded_file($_FILES["avatar-file"]["tmp_name"], $target_file)) {
-	    echo "Файл ". basename( $_FILES["avatar-file"]["name"]). " был загружен на сервер.";
-	  } else {
-	    echo "Ошибка загрузки файла";
-	  }
-	}
-
-	//Здесь будет обработка других полей
 
 ?>

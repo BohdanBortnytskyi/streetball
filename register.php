@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="ru">
 
   <?php
     // Конфигурация БД
@@ -7,6 +7,7 @@
 
     // Head
     include $_SERVER['DOCUMENT_ROOT'] . '/parts/header.php';
+    
     // После клика на ссылку подтверждения регистрации 
     if(isset($_GET['u_code'])) {
     $sql = "SELECT * FROM players WHERE confirm='" . $_GET['u_code'] . "'";
@@ -46,15 +47,16 @@
 
   }
 
+  // Функция-генеретор случайной строки
   function generateRandomString($length = 10) {
-  $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-  $charactersLength = strlen($characters);
-  $randomString = '';
-  for ($i = 0; $i < $length; $i++) {
-      $randomString .= $characters[rand(0, $charactersLength - 1)];
+    $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    $charactersLength = strlen($characters);
+    $randomString = '';
+    for ($i = 0; $i < $length; $i++) {
+        $randomString .= $characters[rand(0, $charactersLength - 1)];
+    }
+    return $randomString;
   }
-  return $randomString;
-}
   ?>
 
   <body>

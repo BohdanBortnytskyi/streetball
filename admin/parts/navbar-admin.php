@@ -24,7 +24,7 @@
     <ul class="navbar-nav d-lg-block">
 
       <li class="nav-item">
-        <a class="nav-link" href="admin.php">Админпанель</a>
+        <a class="nav-link" href="/admin">Админпанель</a>
       </li>
       <hr>
       <li class="nav-item">

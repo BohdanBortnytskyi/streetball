@@ -34,11 +34,11 @@
           <ul class="nav nav-small flex-column">
 
             <li class="nav-item">
-              <a class="nav-link" href="tours-list.php">Все туры</a>
+              <a class="nav-link" href="/admin/toursList.php">Все туры</a>
             </li>
 
             <li class="nav-item">
-              <a class="nav-link" href="tours-new.php">Создать новый</a>
+              <a class="nav-link" href="/admin/toursNew.php">Создать новый</a>
             </li>
 
           </ul>
@@ -53,11 +53,11 @@
           <ul class="nav nav-small flex-column">
 
             <li class="nav-item">
-              <a class="nav-link" href="events-list.php">Все турниры</a>
+              <a class="nav-link" href="/admin/eventsList.php">Все турниры</a>
             </li>
 
             <li class="nav-item">
-              <a class="nav-link" href="events-new.php">Создать новый</a>
+              <a class="nav-link" href="/admin/eventsNew.php">Создать новый</a>
             </li>
 
           </ul>
@@ -72,11 +72,11 @@
           <ul class="nav nav-small flex-column">
 
             <li class="nav-item">
-              <a class="nav-link" href="#">Все игроки</a>
+              <a class="nav-link" href="/admin/playersList.php">Все игроки</a>
             </li>
 
             <li class="nav-item">
-              <a class="nav-link" href="#">Добавить</a>
+              <a class="nav-link" href="/admin/playersNew.php">Добавить</a>
             </li>
 
           </ul>
@@ -91,11 +91,11 @@
           <ul class="nav nav-small flex-column">
 
             <li class="nav-item">
-              <a class="nav-link" href="#">Все команды</a>
+              <a class="nav-link" href="/admin/teamsList.php">Все команды</a>
             </li>
 
             <li class="nav-item">
-              <a class="nav-link" href="#">Добавить</a>
+              <a class="nav-link" href="/admin/teamsNew.php">Добавить</a>
             </li>
 
           </ul>

@@ -50,10 +50,17 @@
 
         <!-- Блок контента -->
           <?php
-            if(isset($_COOKIE["player_id"])) {
-              $sql = "SELECT * FROM players WHERE id=" . $_COOKIE["player_id"];
-              $result = $connect->query($sql);
-              $player = mysqli_fetch_assoc($result); 
+          
+          $sql = "SELECT * FROM players WHERE id=" . $_COOKIE["player_id"];
+          $result = $connect->query($sql);
+          $player = mysqli_fetch_assoc($result); 
+          if($player['firstName'] == "" && $player['lastName'] == "" && $player['city'] == "" && $player['gender'] == "" && 
+             $player['age'] == "0" && $player['height'] == "0" && $player['weight'] == "0") {
+              echo "<p>Заполните пожалуйста обязательные данные своего профиля по следующей ";
+              ?>
+              <a href="http://streetball.local/profile-settings.php">ссылке</p></a>   
+              <?php
+          } else {
           ?>
          
         <div class="container">
@@ -92,7 +99,7 @@
                             </tr>
                             <?php
                             }
-                           ?>
+                            ?>
                         </tbody>
                       </table>                      
                     </p>

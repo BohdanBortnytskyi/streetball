@@ -1,24 +1,9 @@
-<!doctype html>
-<html lang="ru">
+
 
   <?php
-    // Конфигурация БД
-    include $_SERVER['DOCUMENT_ROOT'] . '/configs/db.php';
-
-    // Head
+    // Header
     include $_SERVER['DOCUMENT_ROOT'] . '/admin/parts/header.php';
   ?>
-
-  <body>
-
-    <div class="layout layout-nav-side">
-
-      <?php
-        // Главное боковое меню
-        include $_SERVER['DOCUMENT_ROOT'] . '/admin/parts/navbar-admin.php';
-      ?>
-
-      <div class="main-container">
         <!-- Хлебные крошки и кнопка Настройки -->
         <div class="navbar bg-white breadcrumb-bar">
           <nav aria-label="breadcrumb">

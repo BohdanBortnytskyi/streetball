@@ -24,7 +24,7 @@
     <ul class="navbar-nav d-lg-block">
 
       <li class="nav-item">
-        <a class="nav-link" href="admin.php">Админпанель</a>
+        <a class="nav-link" href="/admin">Админпанель</a>
       </li>
       <hr>
       <li class="nav-item">
@@ -103,9 +103,24 @@
 
       </li>
 
-      <!-- <li class="nav-item">
-        <a class="nav-link" href="#">Еще один пункт</a>
-      </li> -->
+      <li class="nav-item">
+
+          <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-5" aria-controls="submenu-2">Прошедшие турниры</a>
+          <div id="submenu-5" class="collapse">
+            <ul class="nav nav-small flex-column">
+
+              <li class="nav-item">
+                <a class="nav-link" href="/admin/eventsList.php">Все прошедшие турниры</a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link" href="/admin/eventsNew.php">Добавить прошедший турнир</a>
+              </li>
+
+            </ul>
+          </div>
+
+      </li>
 
     </ul>
 

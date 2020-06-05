@@ -1,3 +1,10 @@
+<?php
+    // Конфигурация БД
+    include $_SERVER['DOCUMENT_ROOT'] . '/configs/db.php';
+?>
+
+<!doctype html>
+<html lang="ru">
 <head>
     <meta charset="utf-8">
     <title>Платформа Game USL 3x3</title>
@@ -9,3 +16,14 @@
     <link href="/admin/assets/css/theme.css" rel="stylesheet" type="text/css" media="all" />
     <link href="/admin/assets/css/custom.css" rel="stylesheet" type="text/css" media="all" />
 </head>
+
+ <body>
+
+    <div class="layout layout-nav-side">
+
+      <?php
+        // Главное боковое меню
+        include $_SERVER['DOCUMENT_ROOT'] . '/admin/parts/navbar-admin.php';
+      ?>
+
+      <div class="main-container">

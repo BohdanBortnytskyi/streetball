@@ -27,9 +27,11 @@
                 if($quantity > 1) {
                     // если больше одного выводим сообщение об ошибке
                     echo "<h2>Mulfanction</h2>";
+                // если нет, то выводим форму редактирования с данными
+                // конкретного турнира
                 } else {
-                    // если нет, то выводим форму редактирования с данными
-                    // конкретного турнира
+                    // декодируем json, полученный из БД
+                    $category = json_decode($event["categoryID"], true);
         ?>
         <div class="container">
           <div class="row justify-content-center">
@@ -92,7 +94,17 @@
                 <div class="form-group row align-items-center">
                   <label class="col-2">Категория</label>
                   <div class="col">
-                    <input type="text" value="<?=$event["categoryID"]?>" class="form-control" name="category" required />
+                   <select class="form-control" name="category[]" multiple="multiple" required>
+                       <?php
+                          // for записываем альтернативно
+                          for( $i = 0; $i < count($category['category']); $i++ ):
+                        ?>
+                           <!-- присваиваем value значение, а также выводим название категории, полученное из массива $category['category'] -->
+                           <option value="<?php echo $category['category'][$i]; ?>"><?php echo $category['category'][$i]; ?></option>
+                       <?php
+                           endfor;
+                       ?>
+                   </select>
                   </div>
                 </div>
 

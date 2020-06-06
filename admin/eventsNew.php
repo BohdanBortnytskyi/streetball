@@ -69,7 +69,7 @@
                 <div class="form-group row align-items-center">
                   <label class="col-2">Категория</label>
                   <div class="col">
-                    <select class="form-control" name="category">
+                    <select class="form-control" name="category[]" multiple="multiple" required>
                         <?php
                             $sqlCategories = "SELECT * FROM categories";
                             // получаем результат из базы данных
@@ -78,7 +78,7 @@
                             while($category = mysqli_fetch_assoc($resultCategories)) {
                          ?>
                             <!-- присваиваем value значение id, а также выводим название категории, полученное из базы данных -->
-                            <option value="<?php echo $category['id']; ?>"><?php echo $category['categoryName']; ?></option>
+                            <option value="<?php echo $category['categoryName']; ?>"><?php echo $category['categoryName']; ?></option>
                         <?php
                                 }
                         ?>

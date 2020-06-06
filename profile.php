@@ -70,7 +70,7 @@
                 <div class="media">
                   <img alt="Image" src="assets/img/avatars/<?php echo $player['photo']; ?>" class="avatar avatar-lg mt-1" />
                   <div class="media-body ml-3">
-                    <h1 class="mb-0"><?php echo $player['firstName']; ?>&nbsp;<?php echo $player['lastName']; ?><span class="badge badge-pill badge-success"><?php echo $player['rankPoints']; ?></span></h1>
+                    <h1 class="mb-0"><?php echo $player['firstName']; ?>&nbsp;<?php echo $player['lastName']; ?>&nbsp;<span class="badge badge-pill badge-success" title="Рейтинг игрока"><?php echo $player['rankPoints']; ?></span></h1>
                     <p class="lead">
                       <a href="<?php echo $player['facebook']; ?>" target="_blank"><img height="24" src="assets/img/facebook.svg" ></a>
                       <a href="<?php echo $player['instagram']; ?>" target="_blank"><img height="24" src="assets/img/instagram.svg" ></a>

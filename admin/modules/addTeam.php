@@ -7,12 +7,10 @@ include $_SERVER['DOCUMENT_ROOT']."/configs/db.php";
 // проверяем существуют ли POST-запросы созданные формой добавления команды
 if(isset($_POST["teamName"]) && isset($_POST["category"])) {
 	//если да, то создаем запрос для базы данных
-	$sql = "INSERT INTO teams (name, categoryID, city, teamWins, teamLosses, rankPoints)
+	$sql = "INSERT INTO teams (name, categoryID, city, rankPoints)
 	        VALUES ('" . $_POST["teamName"] . "',
 	                '" . $_POST["category"] . "',
 	                '" . $_POST["city"] . "',
-	                '" . $_POST["wins"] . "',
-	                '" . $_POST["losses"] . "',
 	                '" .$_POST["teamRank"] . "')";
 
 	//посылаем запрос и делаем маленькую проверку

@@ -35,8 +35,86 @@
         <!-- Блок контента -->
         <div class="container">
           <div class="row justify-content-center">
-            Здесь будет форма отправки результатов турнира.
-            Доступ только у организатора.
+            <div class="col-12 m-2">
+              <h1>Результаты турнира</h1>
+              <form>
+                <fieldset>
+                <legend>Плей-офф раунд</legend>
+                  <div class="form-group row align-items-center">
+                    <label class="col-2">1 место</label>
+                    <div class="col">
+                      <input type="text" placeholder="Название команды" class="form-control" required />
+                    </div>
+                  </div>
+                  <div class="form-group row align-items-center">
+                    <label class="col-2">2 место</label>
+                    <div class="col">
+                      <input type="text" placeholder="Название команды" class="form-control" required />
+                    </div>
+                  </div>
+                  <div class="form-group row align-items-center">
+                    <label class="col-2">3 место</label>
+                    <div class="col">
+                      <input type="text" placeholder="Название команды" class="form-control" required />
+                    </div>
+                  </div>
+                  <div class="form-group row align-items-center">
+                    <label class="col-2">1/2</label>
+                    <div class="col">
+                      <input type="text" placeholder="Название команды" class="form-control" required />
+                    </div>
+                  </div>
+                  <div class="form-group row align-items-center">
+                    <label class="col-2">1/4</label>
+                    <div class="col">
+                      <input type="text" placeholder="Название команды" class="form-control" required />
+                    </div>
+                  </div>
+                  <div class="form-group row align-items-center">
+                    <label class="col-2">1/4</label>
+                    <div class="col">
+                      <input type="text" placeholder="Название команды" class="form-control" required />
+                    </div>
+                  </div>
+                  <div class="form-group row align-items-center">
+                    <label class="col-2">1/4</label>
+                    <div class="col">
+                      <input type="text" placeholder="Название команды" class="form-control" required />
+                    </div>
+                  </div>
+                  <div class="form-group row align-items-center">
+                    <label class="col-2">1/4</label>
+                    <div class="col">
+                      <input type="text" placeholder="Название команды" class="form-control" required />
+                    </div>
+                  </div>
+              </fieldset>
+              <fieldset>
+                <legend>Групповой этап</legend>
+                  <div class="form-group row align-items-center">
+                    <label class="col-2">1 место</label>
+                    <div class="col">
+                      <input type="text" placeholder="Название команды" class="form-control" required />
+                    </div>
+                  </div>
+                  <div class="form-group row align-items-center">
+                    <label class="col-2">2 место</label>
+                    <div class="col">
+                      <input type="text" placeholder="Название команды" class="form-control" required />
+                    </div>
+                  </div>
+                  <div class="form-group row align-items-center">
+                    <label class="col-2">3 место</label>
+                    <div class="col">
+                      <input type="text" placeholder="Название команды" class="form-control" required />
+                    </div>
+                  </div>
+              </fieldset>
+                <div class="row justify-content-end">
+                  <button type="submit" class="btn btn-primary">Сохранить</button>
+                </div>
+              </form>
+            </div>
           </div>
         </div>
     </div>

@@ -1,9 +1,9 @@
 
   <?php
+
     // Header
     include $_SERVER['DOCUMENT_ROOT'] . '/admin/parts/header.php';
   ?>
-
         <div class="container">
           <div class="row justify-content-center">
             <div class="col-lg-11 col-xl-9">

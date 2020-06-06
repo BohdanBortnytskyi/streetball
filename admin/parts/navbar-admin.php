@@ -1,3 +1,4 @@
+
 <!-- Главное бокове меню -->
 <div class="navbar navbar-expand-lg bg-dark navbar-dark sticky-top">
 
@@ -20,6 +21,10 @@
       </div>
     </div>
   </div>
+  <?php
+
+  	if(isset($_COOKIE["user_id"])):
+  ?>
   <div class="collapse navbar-collapse flex-column" id="navbar-collapse">
     <ul class="navbar-nav d-lg-block">
 
@@ -125,17 +130,28 @@
     </ul>
 
   </div>
+
+  <?php
+  	endif;
+  ?>
   <div class="d-none d-lg-block">
     <div class="dropup">
-      <a href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <?php
+        // проверяем залогинился ли admin
+        if(isset($_COOKIE["user_id"])) {
+    ?>
+      <a href="/admin/exit.php" class="btn btn-dark bt-lg">
         <img alt="Image" src="/admin/assets/img/avatar-male-4.jpg" class="avatar" />
-        <span>Имя Админа</span>
+        <span>Выйти</span>
       </a>
-      <div class="dropdown-menu">
-        <a href="profile.php" class="dropdown-item">Профиль</a>
-        <a href="logout.php" class="dropdown-item">Выход</a>
-      </div>
+      <?php
+            } else {
+      ?>
+            <img alt="Image" src="/admin/assets/img/avatar-male-4.jpg" class="avatar" />
+            <button class="btn btn-dark bt-lg" onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button>
+      <?php
+            }
+      ?>
     </div>
   </div>
-
 </div>

@@ -15,6 +15,7 @@
     <link href="https://fonts.googleapis.com/css?family=Gothic+A1" rel="stylesheet">
     <link href="/admin/assets/css/theme.css" rel="stylesheet" type="text/css" media="all" />
     <link href="/admin/assets/css/custom.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="/admin/assets/css/adminLogin.css" rel="stylesheet" type="text/css" media="all" />
 </head>
 
  <body>
@@ -22,6 +23,7 @@
     <div class="layout layout-nav-side">
 
       <?php
+        include $_SERVER['DOCUMENT_ROOT']."/admin/adminLogin.php";
         // Главное боковое меню
         include $_SERVER['DOCUMENT_ROOT'] . '/admin/parts/navbar-admin.php';
       ?>

@@ -12,8 +12,6 @@ if(isset($_POST["teamName"]) && isset($_POST["city"]) && isset($_POST["category"
 							`name`= '" . $_POST["teamName"] . "',
 							`categoryID`='" . $_POST["category"] . "',
 							`city`='" . $_POST["city"] . "',
-							`teamWins`='" . $_POST["wins"] . "',
-							`teamLosses`='" .$_POST["losses"] . "',
 							`rankPoints`='" .$_POST["teamRank"] . "'
 			WHERE `id` = '" .$_POST["id"] . "';";
 

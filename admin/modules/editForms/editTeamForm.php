@@ -66,20 +66,6 @@
                   </div>
                 </div>
 
-                <div class="form-group row align-items-center">
-                  <label class="col-2">Победы</label>
-                  <div class="col">
-                    <input type="text" value="<?=$team["teamWins"]?>" class="form-control" name="wins" required />
-                  </div>
-                </div>
-
-                <div class="form-group row align-items-center">
-                  <label class="col-2">Поражения</label>
-                  <div class="col">
-                    <input type="text" value="<?=$team["teamLosses"]?>" class="form-control" name="losses" required />
-                  </div>
-                </div>
-
                <div class="form-group row align-items-center">
                   <label class="col-2">Рейтинг</label>
                   <div class="col">

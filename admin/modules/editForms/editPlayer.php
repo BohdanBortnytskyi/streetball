@@ -15,7 +15,6 @@ if(isset($_POST["playerFirstName"]) && isset($_POST["id"])) {
                           `age` = '" . $_POST["age"] . "',
                           `height` = '" . $_POST["height"] . "',
                           `weight` = '" . $_POST["weight"] . "',
-                          `isCaptain` = '" . $_POST["isCaptain"] . "',
                           `teamID` = '" . $_POST["playerTeam"] . "',
                           `phone` = '" . $_POST["phone"] . "',
                           `email` = '" . $_POST["email"] . "',

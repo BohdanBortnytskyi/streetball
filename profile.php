@@ -50,16 +50,19 @@
 
         <!-- Блок контента -->
           <?php
-          
+          // Выводим игрока согласно куки
           $sql = "SELECT * FROM players WHERE id=" . $_COOKIE["player_id"];
           $result = $connect->query($sql);
           $player = mysqli_fetch_assoc($result); 
+          // если не заполнены обязательные поля
           if($player['firstName'] == "" && $player['lastName'] == "" && $player['city'] == "" && $player['gender'] == "" && 
              $player['age'] == "0" && $player['height'] == "0" && $player['weight'] == "0") {
-              echo "<p>Заполните пожалуйста обязательные данные своего профиля по следующей ";
+              // то выводим следующее сообщение и переход к ссылке на редактирования профиля
+              echo "Заполните пожалуйста обязательные данные своего профиля по следующей ";
               ?>
-              <a href="http://streetball.local/profile-settings.php">ссылке</p></a>   
+              <a href="http://streetball.local/profile-settings.php">ссылке</a>   
               <?php
+              // иначе выводим данные профиля игрока
           } else {
           ?>
          
@@ -70,7 +73,7 @@
                 <div class="media">
                   <img alt="Image" src="assets/img/avatars/<?php echo $player['photo']; ?>" class="avatar avatar-lg mt-1" />
                   <div class="media-body ml-3">
-                    <h1 class="mb-0"><?php echo $player['firstName']; ?>&nbsp;<?php echo $player['lastName']; ?>&nbsp;<span class="badge badge-pill badge-success" title="Рейтинг игрока"><?php echo $player['rankPoints']; ?></span></h1>
+                    <h1 class="mb-0"><?php echo $player['firstName']; ?>&nbsp;<?php echo $player['lastName']; ?><span class="badge badge-pill badge-success"><?php echo $player['rankPoints']; ?></span></h1>
                     <p class="lead">
                       <a href="<?php echo $player['facebook']; ?>" target="_blank"><img height="24" src="assets/img/facebook.svg" ></a>
                       <a href="<?php echo $player['instagram']; ?>" target="_blank"><img height="24" src="assets/img/instagram.svg" ></a>
@@ -96,6 +99,10 @@
                             <td><?php echo $player['height']; ?></td>
                             <td><?php echo $player['weight']; ?></td>
                             <td><?php echo $player['about']; ?></td>
+                            <td><a href="/myteam.php?id=<?php echo $player['id'] ?>" type="button" class="btn btn-primary btn-sm">
+                            Моя команда 
+                        </a> <!-- добавляем кнопку моя команда -->
+                      </td>
                             </tr>
                             <?php
                             }

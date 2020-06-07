@@ -20,19 +20,25 @@
 
       <div class="main-container">
 
+         <?php
+          // Выводим турнир согласно гет запросу
+          $sql = "SELECT * FROM calendar WHERE id =" . $_GET["id"];
+          $result = $connect->query($sql);
+          $event = mysqli_fetch_assoc($result); 
+         ?>
         <!-- Хлебные крошки и кнопка Настройки -->
         <div class="navbar bg-white breadcrumb-bar">
           <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
               <li class="breadcrumb-item"><a href="/">Главная</a></li>
-              <li class="breadcrumb-item"><a href="calendar.php">Каледарь турниров</a></li>
-              <li class="breadcrumb-item active" aria-current="page">Khimik Streetball Party vol. 11</li>
+              <li class="breadcrumb-item"><a href="calendar.php">Календарь турниров</a></li>
+              <li class="breadcrumb-item active" aria-current="page"><?php echo $event['name']; ?></li>
             </ol>
           </nav>
         </div>
          
         <!-- Карта места проведения --> 
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3875.3006666540878!2d31.10050819375568!3d46.62179566082667!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40c61567fc0c7b2f%3A0x7c5ec756377ca95f!2z0KTQodCaICLQntC70LjQvNC_Ig!5e0!3m2!1sru!2sua!4v1591278847695!5m2!1sru!2sua" width="100%" height="250" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+        <iframe src="<?php echo $event['map']; ?>" width="100%" height="250" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
 
         <!-- Блок контента -->
         <div class="container">
@@ -42,12 +48,12 @@
                 <div class="media">
                   <img alt="Image" src="assets/img/logo-color.png" height="100" class="avatar avatar-lg mt-1" />
                   <div class="media-body ml-3">
-                    <h1 class="mb-0">Khimik Streetball Party vol. 11</h1>
+                    <h1 class="mb-0"><?php echo $event['name']; ?></h1><!-- Имя турнира -->
                     <p class="lead">
                       <table class="table table-sm">
                         <thead align="center">
                           <tr>
-                            <th scope="col">Дата</th>
+                            <th scope="col">Дата и время начало</th>
                             <th scope="col">Город</th>
                             <th scope="col">Локация</th>
                             <th scope="col">Команд</th>
@@ -55,10 +61,16 @@
                         </thead>
                         <tbody align="center">
                           <tr>
-                            <td>30.05.2020</td>
-                            <td>Южный</td>
-                            <td>Проспект Мира</td>
-                            <td>23</td>
+                            <td><?php echo $event['date']; ?></td><!-- Дата и время турнира -->
+                            <td><?php echo $event['city']; ?></td><!-- Город проведения турнира -->
+                            <td><?php echo $event['location']; ?></td><!-- Локация проведения турнира -->
+                            <?php
+                            // Выводим колличество команд согласно гет запросу турнира
+                            $sqlTeams = "SELECT * FROM registeredteams WHERE tournamentID =" . $_GET["id"];
+                              $resultTeams = $connect->query($sqlTeams);
+                              $count = mysqli_num_rows($resultTeams);
+                             ?>
+                            <td><?php echo $count ?></td><!-- Колличество команд что учатсвует в данном турнире -->
                           </tr>
                         </tbody>
                       </table>                      
@@ -87,42 +99,47 @@
                   <table class="table table-sm">
                       <tbody>
                         <tr>
-                          <th width="30%">Время начала</th>
-                          <td>9:00</td>
-                        </tr>
-                        <tr>
-                          <th>Место проведения</th>
-                          <td>Проспект Мира</td>
-                        </tr>
-                        <tr>
                           <th>Категории участников</th>
                           <td>
+                           <?php
+                           // Декадируем с джейсон формата инфо с категорий
+                           $cat = json_decode($event['categoryID'], true);
+                           // Запускаем цикл для вывода необходимых значений категории
+                           for($i = 0; $i < count($cat['category']); $i++) {
+                              ?>
                             <ul>
-                              <li>Мужчины</li>
-                              <li>Юноши</li>
-                              <li>Женщины</li>
+                              <li><?php echo $cat['category'][$i] ?></li><!-- информация с категорий -->
                             </ul>
+                            <?php
+                            }
+                            ?>
                           </td>
                         </tr>
                         <tr>
                           <th>Организационный взнос</th>
-                          <td>Нет</td>
+                          <td><?php echo $event['fee']; ?></td><!-- выводим взнос турнира-->
                         </tr>
                         <tr>
                           <th>Описание</th>
-                          <td>Описание турнира</td>
+                          <td><?php echo $event['about']; ?></td><!-- выводим описание турнира-->
                         </tr>
                         <tr>
                           <th>Положения</th>
-                          <td>Документ с положениями турнира</td>
+                          <td><?php echo $event['document']; ?></td><!-- выводим положение турнира -->
                         </tr>
                         <tr>
                           <th>Веб-сайт</th>
-                          <td>streetball-yuzhny.org</td>
+                          <td><?php echo $event['webSite']; ?></td><!-- выводим сайт турнира -->
                         </tr>
                         <tr>
+                          <?php
+                          // Делаем запрос на вывод организатора турнира
+                          $sql = "SELECT * FROM organizers WHERE id=" . $event['organizerID'];
+                              $result = $connect->query($sql);
+                              $org = mysqli_fetch_assoc($result); 
+                           ?>   
                           <th>Организатор</th>
-                          <td>ОО "Стритбол Южный"</td>
+                          <td><?php echo $org['firstName']; ?>&nbsp;<?php echo $org['lastName']; ?></td><!-- выводим имя организатора турнира -->
                         </tr>
                       </tbody>
                     </table> 

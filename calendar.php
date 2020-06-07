@@ -26,7 +26,7 @@
             <ol class="breadcrumb">
               <li class="breadcrumb-item"><a href="/">Главная</a>
               </li>
-              <li class="breadcrumb-item active" aria-current="page">Каледарь турниров</li>
+              <li class="breadcrumb-item active" aria-current="page">Календарь турниров</li>
             </ol>
           </nav>
         </div>
@@ -50,58 +50,54 @@
                     </div>
                   </form>
                 </div>
-                <div class="card card-task">
-                  <div class="card-body">
-                    <div class="card-title">
-                      <a href="events-single.php">
-                        <h6 data-filter-by="text">Khimik Streetball Party 10</h6>
-                      </a>
-                      <span class="text-small">30.05.2020</span>
-                      <span class="text-small">Южный</span>
-                    </div>
-                    <div class="card-meta">
-                      <div class="d-flex align-items-center">
-                        <i class="material-icons">sports_basketball</i>
-                        <span>Команд: 12</span>
-                      </div>
-                      <button type="button" title="" class="btn btn-primary btn-sm ml-4">Регистрация</button>
-                    </div>
-                  </div>
-                </div>
-                <div class="card card-task">
-                  <div class="card-body">
-                    <div class="card-title">
-                      <a href="events-single.php">
-                        <h6 data-filter-by="text">Khimik Streetball Party 10</h6>
-                      </a>
-                      <span class="text-small">30.05.2020</span>
-                      <span class="text-small">Южный</span>
-                    </div>
-                    <div class="card-meta">
-                      <div class="d-flex align-items-center">
-                        <i class="material-icons">sports_basketball</i>
-                        <span>Команд: 12</span>
-                      </div>
-                      <button type="button" title="" class="btn btn-primary btn-sm ml-4" disabled>Регистрация</button>
-                    </div>
-                  </div>
-                </div>
-                <div class="card card-task">
-                  <div class="card-body">
-                    <div class="card-title">
-                      <a href="events-single.php">
-                        <h6 data-filter-by="text">Khimik Streetball Party 10</h6>
-                      </a>
-                      <span class="text-small">30.05.2020</span>
-                      <span class="text-small">Южный</span>
-                    </div>
-                    <div class="card-meta">
-                      <div class="d-flex align-items-center">
-                        <i class="material-icons">sports_basketball</i>
-                        <span>Команд: 12</span>
-                      </div>
-                      <button type="button" title="" class="btn btn-primary btn-sm ml-4" disabled>Регистрация</button>
-                    </div>
+                 <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Название</th>
+                    <th scope="col">Дата и время</th>
+                    <th scope="col">Организатор</th>
+                    <th scope="col">Команд</th>
+                  </tr>
+                </thead>
+                 <tbody>
+                    <?php
+                        // создаем запрос для получения всех events
+                        $sql = "SELECT * FROM calendar";
+                        // заносим в переменную результаты запроса
+                        $result = $connect->query($sql);
+                        // запускаем цикл, присваиваем переменной row строку из переменной $result
+                        // и пока row не равен NULL выводим данные о event
+                        while($row = mysqli_fetch_assoc($result)) {
+                    ?>
+                    <td><?php echo $row["id"] ?></td><!-- выводим ай ди турниров -->
+                    <td><?php echo $row["name"] ?></td><!-- выводим имена турниров -->
+                    <td><?php echo $row["date"] ?></td><!-- выводим даты и время турниров -->
+                    <?php
+                    // Делаем запрос на вывод организаторов турниров
+                    $sqlOrg = "SELECT * FROM organizers WHERE id=" . $row['organizerID'];
+                    $resultOrg = $connect->query($sqlOrg);
+                    // Запускаем цикл на вывод организаторов турниров
+                    while($org = mysqli_fetch_assoc($resultOrg)) {
+                    ?>
+                    <td><?php echo $org['firstName']; ?>&nbsp;<?php echo $org['lastName']; ?></td><!-- выводим имена организаторов турниров -->
+                    <?php
+                    // Делаем запрос на вывод колличества команд в турнирах
+                    $sqlTeams = "SELECT * FROM registeredteams WHERE tournamentID =" . $row["id"];
+                    $resultTeams = $connect->query($sqlTeams);
+                    // создаем переменную с колличеством команд
+                    $count = mysqli_num_rows($resultTeams);
+                    ?>
+                    <td><?php echo $count ?></td><!-- выводим количество команд в турнирах -->
+                    <td><a href="/events-single.php?id=<?php echo $row['id'] ?>" type="button" class="btn btn-primary btn-sm">
+                            Регистрация
+                        </a><!-- делаем кнопку для регистрации на турниры -->
+                      </td>
+                    </tr>
+                    <?php
+                    }
+                  }
+                    ?>
                   </div>
                 </div>
               </div>

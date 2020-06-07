@@ -90,30 +90,9 @@
                 </div>
 
                 <div class="form-group row align-items-center">
-                  <label class="col-2">Капитан</label>
-                  <div class="col">
-                    <input type="text" value="<?=$player["isCaptain"]?>" class="form-control" name="isCaptain" required />
-                  </div>
-                </div>
-
-                <div class="form-group row align-items-center">
                   <label class="col-2">Команда</label>
                   <div class="col">
-                    <select class="form-control" name="playerTeam">
-
-                        <?php
-                            $sqlTeams = "SELECT * FROM teams";
-                            // получаем результат из базы данных
-                            $resultTeams = $connect->query($sqlTeams);
-                            // запускаем цикл, который действует пока $category не равен Null
-                            while($team = mysqli_fetch_assoc($resultTeams)) {
-                         ?>
-                            <!-- присваиваем value значение id, а также выводим название категории, полученное из базы данных -->
-                            <option value="<?php echo $player['teamID']; ?>"><?php echo $team['name']; ?></option>
-                        <?php
-                                }
-                        ?>
-                    </select>
+                    <input type="text" value="<?=$player["teamID"]?>" class="form-control" name="playerTeam"required />
                   </div>
                 </div>
 

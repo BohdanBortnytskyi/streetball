@@ -23,20 +23,18 @@
                     <th scope="col">Название</th>
                     <th scope="col">Категория</th>
                     <th scope="col">Город</th>
-                    <th scope="col">Победы</th>
-                    <th scope="col">Поражения</th>
                     <th scope="col">Рейтинг</th>
                     <th scope="col">Опции</th>
                   </tr>
                 </thead>
                 <tbody>
                     <?php
-                        // создаем запрос для получения всех продуктов
+                        // создаем запрос для получения всех команд
                         $sql = "SELECT * FROM teams ORDER BY rankPoints desc";
                         // заносим в переменную результаты запроса
                         $result = $connect->query($sql);
                         // запускаем цикл, присваиваем переменной row строку из переменной $result
-                        // и пока row не равен NULL выводим данные о продукте
+                        // и пока row не равен NULL выводим данные о команде
                         while($row = mysqli_fetch_assoc($result)) {
                     ?>
                   <tr>
@@ -44,8 +42,6 @@
                     <td><?php echo $row["name"] ?></td>
                     <td><?php echo $row["categoryID"] ?></td>
                     <td><?php echo $row["city"] ?></td>
-                    <td><?php echo $row["teamWins"] ?></td>
-                    <td><?php echo $row["teamLosses"] ?></td>
                     <td><?php echo $row["rankPoints"] ?></td>
                     <td>
                       <a href="/admin/modules/editForms/editTeamForm.php?id=<?php echo $row['id'] ?>" type="button" class="btn btn-primary btn-sm">

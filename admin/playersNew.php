@@ -20,7 +20,7 @@
                 <div class="form-group row align-items-center">
                   <label class="col-2">Имя</label>
                   <div class="col">
-                    <input type="text" placeholder="Имя" class="form-control" name="playerFirstName" required />
+                    <input type="text" placeholder="Имя" class="form-control" name="playerFirstName" required autofocus/>
                   </div>
                 </div>
 
@@ -70,19 +70,12 @@
                 </div>
 
                 <div class="form-group row align-items-center">
-                  <label class="col-2">Капитан</label>
-                  <div class="col">
-                    <input type="text" placeholder="Являетесь ли капитаном" class="form-control" name="isCaptain" required />
-                  </div>
-                </div>
-               
-                <div class="form-group row align-items-center">
                   <label class="col-2">Команда</label>
                   <div class="col">
                     <select class="form-control" name="playerTeam">
 
                         <?php
-                            $sqlTeams = "SELECT * FROM teams";
+                            $sqlTeams = "SELECT * FROM teams ORDER BY name";
                             // получаем результат из базы данных
                             $resultTeams = $connect->query($sqlTeams);
                             // запускаем цикл, который действует пока $category не равен Null

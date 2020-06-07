@@ -7,15 +7,14 @@ include $_SERVER['DOCUMENT_ROOT']."/configs/db.php";
 // проверяем существуют ли POST-запросы созданные формой добавления игрока
 if(isset($_POST["playerFirstName"]) && isset($_POST["playerLastName"])) {
 	//если да, то создаем запрос для базы данных
-	$sql = "INSERT INTO players (firstName, lastName, gender, age, height, weight, isCaptain,
-	                         teamID, phone, email, facebook, instagram, telegram, rankPoints)
+	$sql = "INSERT INTO players (firstName, lastName, gender, age, height, weight, teamID,
+	                             phone, email, facebook, instagram, telegram, rankPoints)
 	        VALUES ('" . $_POST["playerFirstName"] . "',
 	                '" . $_POST["playerLastName"] . "',
 	                '" . $_POST["gender"] . "',
 	                '" . $_POST["age"] . "',
 	                '" . $_POST["height"] . "',
 	                '" . $_POST["weight"] . "',
-	                '" . $_POST["isCaptain"] . "',
 	                '" . $_POST["playerTeam"] . "',
 	                '" . $_POST["phone"] . "',
 	                '" . $_POST["email"] . "',

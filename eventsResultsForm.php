@@ -52,7 +52,7 @@
             <div class="col-12 m-2">
               <h1>Результаты турнира</h1>
 
-              <form>
+              <form action="eventsResultsUpdate.php" method="POST">
                 <fieldset>
                 <legend>Плей-офф раунд</legend>
 
@@ -76,7 +76,7 @@
                   <div class="form-group row align-items-center">
                     <label class="col-2">2 место</label>
                     <div class="col">
-                      <select class="form-control" name="1st" required>
+                      <select class="form-control" name="2nd" required>
                            <?php
                                // запускаем цикл, который действует пока $team не равен Null
                                for($i=0; $i<$rowCount; $i++):
@@ -93,7 +93,7 @@
                   <div class="form-group row align-items-center">
                     <label class="col-2">3 место</label>
                     <div class="col">
-                      <select class="form-control" name="1st" required>
+                      <select class="form-control" name="3rd" required>
                            <?php
                                // запускаем цикл, который действует пока $team не равен Null
                                for($i=0; $i<$rowCount; $i++):
@@ -110,7 +110,7 @@
                   <div class="form-group row align-items-center">
                     <label class="col-2">1/2</label>
                     <div class="col">
-                      <select class="form-control" name="1st" required>
+                      <select class="form-control" name="semiFinal" required>
                            <?php
                                // запускаем цикл, который действует пока $team не равен Null
                                for($i=0; $i<$rowCount; $i++):
@@ -127,7 +127,7 @@
                   <div class="form-group row align-items-center">
                     <label class="col-2">1/4</label>
                     <div class="col">
-                      <select class="form-control" name="1st" required>
+                      <select class="form-control" name="quarterFinal1" required>
                            <?php
                                // запускаем цикл, который действует пока $team не равен Null
                                for($i=0; $i<$rowCount; $i++):
@@ -144,7 +144,7 @@
                   <div class="form-group row align-items-center">
                     <label class="col-2">1/4</label>
                     <div class="col">
-                      <select class="form-control" name="1st" required>
+                      <select class="form-control" name="quarterFinal2" required>
                            <?php
                                // запускаем цикл, который действует пока $team не равен Null
                                for($i=0; $i<$rowCount; $i++):
@@ -161,7 +161,7 @@
                   <div class="form-group row align-items-center">
                     <label class="col-2">1/4</label>
                     <div class="col">
-                      <select class="form-control" name="1st" required>
+                      <select class="form-control" name="quarterFinal3" required>
                            <?php
                                // запускаем цикл, который действует пока $team не равен Null
                                for($i=0; $i<$rowCount; $i++):
@@ -178,7 +178,7 @@
                   <div class="form-group row align-items-center">
                     <label class="col-2">1/4</label>
                     <div class="col">
-                      <select class="form-control" name="1st" required>
+                      <select class="form-control" name="quarterFinal4" required>
                            <?php
                                // запускаем цикл, который действует пока $team не равен Null
                                for($i=0; $i<$rowCount; $i++):
@@ -198,7 +198,7 @@
                   <div class="form-group row align-items-center">
                     <label class="col-2">1 место</label>
                     <div class="col">
-                      <select class="form-control" name="1st" required>
+                      <select class="form-control" name="1stGroup" required>
                            <?php
                                // запускаем цикл, который действует пока $team не равен Null
                                for($i=0; $i<$rowCount; $i++):
@@ -214,7 +214,7 @@
                   <div class="form-group row align-items-center">
                     <label class="col-2">2 место</label>
                     <div class="col">
-                      <select class="form-control" name="1st" required>
+                      <select class="form-control" name="2ndGroup" required>
                            <?php
                                // запускаем цикл, который действует пока $team не равен Null
                                for($i=0; $i<$rowCount; $i++):
@@ -230,7 +230,7 @@
                   <div class="form-group row align-items-center">
                     <label class="col-2">3 место</label>
                     <div class="col">
-                      <select class="form-control" name="1st" required>
+                      <select class="form-control" name="3rdGroup" required>
                            <?php
                                // запускаем цикл, который действует пока $team не равен Null
                                for($i=0; $i<$rowCount; $i++):

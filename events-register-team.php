@@ -73,7 +73,7 @@
                   </div>
                 </div>
                 <div class="form-group row align-items-center">
-                  <label class="col-2">Игрок 4</label>
+                  <label class="col-2">Игрок 4 (не обяз.)</label>
                   <div class="col">
                     <input type="text" placeholder="Игрок 4" class="form-control" required />
                   </div>

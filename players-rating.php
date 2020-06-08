@@ -33,7 +33,7 @@
           <div class="row justify-content-center">
             <div class="col-12 m-2">
               <h1>Рейтинг игроков</h1>
-              <table class="table">
+              <table class="table" width="100%">
                 <thead>
                   <tr>
                     <th scope="col">#</th>
@@ -51,7 +51,7 @@
                         // если гет запрос равен мужчине
                          if ($_GET['gender'] == 'm') {
                         // создаем запрос для получения всех продуктов
-                        $sql = "SELECT * FROM players WHERE gender LIKE 'M' ORDER BY rankPoints desc";
+                        $sql = "SELECT * FROM players WHERE gender LIKE 'm' ORDER BY rankPoints desc";
                         // заносим в переменную результаты запроса
                         $result = $connect->query($sql);
                         // запускаем цикл, присваиваем переменной row строку из переменной $result
@@ -77,7 +77,7 @@
                         // если гет запрос равен юноше
                          if ($_GET['gender'] == 'u') {
                         // создаем запрос для получения всех продуктов
-                        $sql = "SELECT * FROM players WHERE gender LIKE 'U' ORDER BY rankPoints desc";
+                        $sql = "SELECT * FROM players WHERE gender LIKE 'u' ORDER BY rankPoints desc";
                         // заносим в переменную результаты запроса
                         $result = $connect->query($sql);
                         // запускаем цикл, присваиваем переменной row строку из переменной $result
@@ -103,7 +103,7 @@
                         // если гет запрос равен женщине
                          if ($_GET['gender'] == 'w') {
                         // создаем запрос для получения всех продуктов
-                        $sql = "SELECT * FROM players WHERE gender LIKE 'W' ORDER BY rankPoints desc";
+                        $sql = "SELECT * FROM players WHERE gender LIKE 'w' ORDER BY rankPoints desc";
                         // заносим в переменную результаты запроса
                         $result = $connect->query($sql);
                         // запускаем цикл, присваиваем переменной row строку из переменной $result
@@ -130,7 +130,33 @@
             </div>
           </div>
         </div>
-      </div>
+      
     </div>
+
+    <!-- Required vendor scripts (Do not remove) -->
+    <script type="text/javascript" src="assets/js/jquery.min.js"></script>
+    <script type="text/javascript" src="assets/js/popper.min.js"></script>
+    <script type="text/javascript" src="assets/js/bootstrap.js"></script>
+
+    <!-- Optional Vendor Scripts (Remove the plugin script here and comment initializer script out of index.js if site does not use that feature) -->
+
+    <!-- Autosize - resizes textarea inputs as user types -->
+    <script type="text/javascript" src="assets/js/autosize.min.js"></script>
+    <!-- Flatpickr (calendar/date/time picker UI) -->
+    <script type="text/javascript" src="assets/js/flatpickr.min.js"></script>
+    <!-- Prism - displays formatted code boxes -->
+    <script type="text/javascript" src="assets/js/prism.js"></script>
+    <!-- Shopify Draggable - drag, drop and sort items on page -->
+    <script type="text/javascript" src="assets/js/draggable.bundle.legacy.js"></script>
+    <script type="text/javascript" src="assets/js/swap-animation.js"></script>
+    <!-- Dropzone - drag and drop files onto the page for uploading -->
+    <script type="text/javascript" src="assets/js/dropzone.min.js"></script>
+    <!-- List.js - filter list elements -->
+    <script type="text/javascript" src="assets/js/list.min.js"></script>
+
+    <!-- Required theme scripts (Do not remove) -->
+    <script type="text/javascript" src="assets/js/theme.js"></script>
+  </body>
+</html>
 
    

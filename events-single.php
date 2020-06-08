@@ -78,9 +78,10 @@
                 </div>
               </div>
               <div class="mt-2 mb-4">
-                <button class="btn btn-primary btn-block" type="button" id="" aria-haspopup="true" aria-expanded="false">
+                <!-- Делаем переход на регистрацию команды -->
+                <a href="/eventsRegisterTeam.php?id=<?php echo $_GET['id'] ?>" class="btn btn-primary btn-block" type="button" aria-haspopup="true" aria-expanded="false">
                   Зарегистрировать команду на турнир!
-                </button>
+                </a>
               </div>
               <ul class="nav nav-tabs nav-fill" role="tablist">
                 <li class="nav-item">

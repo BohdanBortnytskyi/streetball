@@ -17,7 +17,7 @@
         // Главное боковое меню
         include $_SERVER['DOCUMENT_ROOT'] . '/parts/navbar.php';
             // создаем запрос для получения всех продуктов
-             $sql = "SELECT P.id, concat(p.lastName, ' ', P.firstName) AS FullName
+             $sql = "SELECT P.id, concat(P.lastName, ' ', P.firstName) AS FullName
                     FROM players AS P
                     ORDER BY lastName";
              // заносим в переменную результаты запроса

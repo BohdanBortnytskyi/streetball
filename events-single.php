@@ -135,8 +135,8 @@
                           <?php
                           // Делаем запрос на вывод организатора турнира
                           $sql = "SELECT * FROM organizers WHERE id=" . $event['organizerID'];
-                              $result = $connect->query($sql);
-                              $org = mysqli_fetch_assoc($result); 
+                          $result = $connect->query($sql);
+                          $org = mysqli_fetch_assoc($result); 
                            ?>   
                           <th>Организатор</th>
                           <td><?php echo $org['firstName']; ?>&nbsp;<?php echo $org['lastName']; ?></td><!-- выводим имя организатора турнира -->
@@ -152,6 +152,12 @@
                     </div>
                   </div>
                   <!--end of content list head-->
+                  <?php
+                  // Делаем запрос на вывод команд что участвуют в данном турнире
+                  $sql = "SELECT * FROM teams WHERE categoryID =" . $_GET["id"];
+                  $resultNT = $connect->query($sql);
+                  while($teams = mysqli_fetch_assoc($resultNT)) {
+                  ?>
                   <div class="content-list-body row">
 
                     <div class="col-12">
@@ -159,95 +165,14 @@
                         <div class="card-body">
                           <div class="card-title">
                             <a href="#">
-                              <h6 data-filter-by="text">Чебурашки <span class="badge badge-pill badge-success">3500</span></h6>
+                              <h6 data-filter-by="text"><?php echo $teams['name']; ?><span class="badge badge-pill badge-success"><?php echo $teams['rankPoints']; ?></span></h6>
                             </a>
-                            <span class="text-small">Мужчины</span>
                           </div>
                           <div class="card-meta">
                             <ul class="avatars">
 
                               <li>
-                                <a href="#" data-toggle="tooltip" title="Kenny">
-                                  <img alt="Kenny Tran" class="avatar" src="assets/img/avatar-male-6.jpg" />
-                                </a>
-                              </li>
-
-                              <li>
-                                <a href="#" data-toggle="tooltip" title="David">
-                                  <img alt="David Whittaker" class="avatar" src="assets/img/avatar-male-4.jpg" />
-                                </a>
-                              </li>
-
-                              <li>
-                                <a href="#" data-toggle="tooltip" title="Marcus">
-                                  <img alt="Marcus Simmons" class="avatar" src="assets/img/avatar-male-1.jpg" />
-                                </a>
-                              </li>
-
-                            </ul>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="card card-task">
-                        <div class="card-body">
-                          <div class="card-title">
-                            <a href="#">
-                              <h6 data-filter-by="text">Чебурашки <span class="badge badge-pill badge-success">3500</span></h6>
-                            </a>
-                            <span class="text-small">Мужчины</span>
-                          </div>
-                          <div class="card-meta">
-                            <ul class="avatars">
-
-                              <li>
-                                <a href="#" data-toggle="tooltip" title="Kenny">
-                                  <img alt="Kenny Tran" class="avatar" src="assets/img/avatar-male-6.jpg" />
-                                </a>
-                              </li>
-
-                              <li>
-                                <a href="#" data-toggle="tooltip" title="David">
-                                  <img alt="David Whittaker" class="avatar" src="assets/img/avatar-male-4.jpg" />
-                                </a>
-                              </li>
-
-                              <li>
-                                <a href="#" data-toggle="tooltip" title="Marcus">
-                                  <img alt="Marcus Simmons" class="avatar" src="assets/img/avatar-male-1.jpg" />
-                                </a>
-                              </li>
-
-                            </ul>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="card card-task">
-                        <div class="card-body">
-                          <div class="card-title">
-                            <a href="#">
-                              <h6 data-filter-by="text">Чебурашки <span class="badge badge-pill badge-success">3500</span></h6>
-                            </a>
-                            <span class="text-small">Мужчины</span>
-                          </div>
-                          <div class="card-meta">
-                            <ul class="avatars">
-
-                              <li>
-                                <a href="#" data-toggle="tooltip" title="Kenny">
-                                  <img alt="Kenny Tran" class="avatar" src="assets/img/avatar-male-6.jpg" />
-                                </a>
-                              </li>
-
-                              <li>
-                                <a href="#" data-toggle="tooltip" title="David">
-                                  <img alt="David Whittaker" class="avatar" src="assets/img/avatar-male-4.jpg" />
-                                </a>
-                              </li>
-
-                              <li>
-                                <a href="#" data-toggle="tooltip" title="Marcus">
-                                  <img alt="Marcus Simmons" class="avatar" src="assets/img/avatar-male-1.jpg" />
-                                </a>
+                               <h6 data-filter-by="text"><?php echo $teams['city']; ?></h6>
                               </li>
 
                             </ul>
@@ -255,8 +180,10 @@
                         </div>
                       </div>
                     </div>
-
                   </div>
+                  <?php
+                  }
+                  ?>
                 </div>
                 <div class="tab-pane fade" id="results" role="tabpanel" data-filter-list="content-list-body">
                   <p>Организатор еще не добавил результаты турнира</p>

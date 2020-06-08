@@ -38,15 +38,15 @@
           <ul class="nav nav-small flex-column">
 
             <li class="nav-item">
-              <a class="nav-link" href="#">Мужчины</a>
+              <a class="nav-link" href="http://streetball.local/players-rating.php?gender=m">Мужчины</a>
             </li>
 
             <li class="nav-item">
-              <a class="nav-link" href="#">Юноши</a>
+              <a class="nav-link" href="http://streetball.local/players-rating.php?gender=u">Юноши</a>
             </li>
 
             <li class="nav-item">
-              <a class="nav-link" href="#">Женщины</a>
+              <a class="nav-link" href="http://streetball.local/players-rating.php?gender=w">Женщины</a>
             </li>
 
           </ul>
@@ -61,15 +61,15 @@
           <ul class="nav nav-small flex-column">
 
             <li class="nav-item">
-              <a class="nav-link" href="#">Мужчины</a>
+              <a class="nav-link" href="http://streetball.local/team-rating.php?gender=m">Мужчины</a>
             </li>
 
             <li class="nav-item">
-              <a class="nav-link" href="#">Юноши</a>
+              <a class="nav-link" href="http://streetball.local/team-rating.php?gender=u">Юноши</a>
             </li>
 
             <li class="nav-item">
-              <a class="nav-link" href="#">Женщины</a>
+              <a class="nav-link" href="http://streetball.local/team-rating.php?gender=w">Женщины</a>
             </li>
 
           </ul>

@@ -89,13 +89,26 @@
                     $count = mysqli_num_rows($resultTeams);
                     ?>
                     <td><?php echo $count ?></td><!-- выводим количество команд в турнирах -->
+                    <?php
+                    // Если статус рваен 1
+                    if ($row["status"] == 1) {
+                    ?>
                     <td><a href="/events-single.php?id=<?php echo $row['id'] ?>" type="button" class="btn btn-primary btn-sm">
                             Регистрация
-                        </a><!-- делаем кнопку для регистрации на турниры -->
+                        </a><!--то делаем кнопку для регистрации на турниры -->
                       </td>
+                      <?php
+                      // иначе
+                      } else {
+                        ?>
+                      <td><button type="button" title="" class="btn btn-primary btn-sm" disabled>Регистрация</button><!-- делаем не активную кнопку для регистрации -->
+                      </td>
+                      <?php
+                      }
+                    ?>
                     </tr>
                     <?php
-                    }
+                  }
                   }
                     ?>
                   </div>

@@ -20,7 +20,7 @@
         // создаем запрос для получения всех команд зарегистрированных на турнир
         $sql = "SELECT T.name AS teamName, T.id AS teamID, C.name AS TournamentName
                 FROM teams AS T, calendar AS C, registeredteams AS RT
-                WHERE T.id=RT.teamID AND C.id=RT.tournamentID
+                WHERE RT.tournamentID=1 AND T.id=RT.teamID AND C.id=RT.tournamentID
                 ORDER BY teamName";
         // заносим в переменную результаты запроса
         $result = $connect->query($sql);
@@ -196,25 +196,9 @@
               <fieldset>
                 <legend>Групповой этап</legend>
                   <div class="form-group row align-items-center">
-                    <label class="col-2">1 место</label>
+                    <label class="col-2">3 место</label>
                     <div class="col">
-                      <select class="form-control" name="1stGroup" required>
-                           <?php
-                               // запускаем цикл, который действует пока $team не равен Null
-                               for($i=0; $i<$rowCount; $i++):
-                            ?>
-                               <!-- присваиваем value значение id, а также выводим название команды, полученное из базы данных -->
-                               <option value="<?php echo $team['id'][$i]; ?>"><?php echo $team['name'][$i]; ?></option>
-                           <?php
-                              endfor;
-                           ?>
-                      </select>
-                    </div>
-                  </div>
-                  <div class="form-group row align-items-center">
-                    <label class="col-2">2 место</label>
-                    <div class="col">
-                      <select class="form-control" name="2ndGroup" required>
+                      <select class="form-control" name="group1" required>
                            <?php
                                // запускаем цикл, который действует пока $team не равен Null
                                for($i=0; $i<$rowCount; $i++):
@@ -230,7 +214,7 @@
                   <div class="form-group row align-items-center">
                     <label class="col-2">3 место</label>
                     <div class="col">
-                      <select class="form-control" name="3rdGroup" required>
+                      <select class="form-control" name="group2" required>
                            <?php
                                // запускаем цикл, который действует пока $team не равен Null
                                for($i=0; $i<$rowCount; $i++):
@@ -243,6 +227,38 @@
                       </select>
                     </div>
                   </div>
+                  <div class="form-group row align-items-center">
+                    <label class="col-2">3 место</label>
+                    <div class="col">
+                      <select class="form-control" name="group3" required>
+                           <?php
+                               // запускаем цикл, который действует пока $team не равен Null
+                               for($i=0; $i<$rowCount; $i++):
+                            ?>
+                               <!-- присваиваем value значение id, а также выводим название команды, полученное из базы данных -->
+                               <option value="<?php echo $team['id'][$i]; ?>"><?php echo $team['name'][$i]; ?></option>
+                           <?php
+                              endfor;
+                           ?>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="form-group row align-items-center">
+                      <label class="col-2">3 место</label>
+                      <div class="col">
+                        <select class="form-control" name="group4" required>
+                             <?php
+                                 // запускаем цикл, который действует пока $team не равен Null
+                                 for($i=0; $i<$rowCount; $i++):
+                              ?>
+                                 <!-- присваиваем value значение id, а также выводим название команды, полученное из базы данных -->
+                                 <option value="<?php echo $team['id'][$i]; ?>"><?php echo $team['name'][$i]; ?></option>
+                             <?php
+                                endfor;
+                             ?>
+                        </select>
+                      </div>
+                </div>
               </fieldset>
                 <div class="row justify-content-end">
                   <button type="submit" class="btn btn-primary">Сохранить</button>

@@ -20,7 +20,7 @@
         // создаем запрос для получения всех команд зарегистрированных на турнир
         $sql = "SELECT T.name AS teamName, T.id AS teamID, C.name AS TournamentName
                 FROM teams AS T, calendar AS C, registeredteams AS RT
-                WHERE RT.tournamentID=1 AND T.id=RT.teamID AND C.id=RT.tournamentID
+                WHERE RT.tournamentID='" .$_POST["teamID"] . "' AND T.id=RT.teamID AND C.id=RT.tournamentID
                 ORDER BY teamName";
         // заносим в переменную результаты запроса
         $result = $connect->query($sql);

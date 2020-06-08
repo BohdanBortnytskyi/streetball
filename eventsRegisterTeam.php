@@ -28,6 +28,7 @@
                  $player['id'][] = $row['id'];
                  $player['name'][] = $row['FullName'];
              }
+
       ?>
 
       <div class="main-container">
@@ -49,11 +50,13 @@
           <div class="row justify-content-center">
             <div class="col-12 m-2">
               <h1>Регистрация команды на турнир</h1>
-              <form>
+              <form action="/eventsRegisterTeamUpdate.php" method="POST">
+                <!-- создаем неотображаемый тег для отправки id турнира -->
+                <input type="hidden" name="tournamentID" value="<?php echo $_GET['id'] ?>">
                 <div class="form-group row align-items-center">
                   <label class="col-2">Название команды</label>
                   <div class="col">
-                    <select class="form-control" name="category" required>
+                    <select class="form-control" name="teamID" required>
                         <?php
                             $sqlTeam = "SELECT * FROM teams";
                             // получаем результат из базы данных

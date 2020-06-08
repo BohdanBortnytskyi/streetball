@@ -113,21 +113,22 @@ if(isset($_POST["1st"]) && isset($_POST["2nd"])) {
                                                     WHERE `teamID`='" .$_POST["group4"] . "' )
                      WHERE `id` = '" .$_POST["group4"] . "';";
     if(!$connect->multi_query($sql1)) {
-            // если нет выводим ошибку
-    	    echo "Malfunction: (" . $mysqli->errno . ")" . $mysqli->error;
-    	}
-    	// если да, то запускаем цикл
-    	do {
-        	    if($res = $connect->store_result()) {
-        	        // получаем все результаты
-                    ($res->fetch_all(MYSQLI_ASSOC));
-                    // очищаем переменную
-                    $res->free();
-        	    }
-        	} while ($connect->more_results() && $connect->next_result());
+        // если нет выводим ошибку
+        echo "Malfunction: (" . $mysqli->errno . ")" . $mysqli->error;
+    }
+    // если да, то запускаем цикл
+    do {
+            if($res = $connect->store_result()) {
+                // получаем все результаты
+                ($res->fetch_all(MYSQLI_ASSOC));
+                // очищаем переменную
+                $res->free();
+            }
+        } while ($connect->more_results() && $connect->next_result());
 
-
-		// если да, то переходим на страницу playersList
-		header("location: http://" . $_SERVER['HTTP_HOST'] . '/admin/playersList.php');
+    $sqlDelete = "DELETE FROM `calendar` WHERE `id`='" . $_POST["tournamentID"] . "'";
+    $connect->query($sqlDelete);
+    // если да, то переходим на страницу playersList
+    header("location: http://" . $_SERVER['HTTP_HOST'] . '/admin/playersList.php');
 }
 ?>

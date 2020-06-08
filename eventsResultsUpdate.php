@@ -17,6 +17,25 @@ if(isset($_POST["1st"]) && isset($_POST["2nd"])) {
         			WHERE `teamID` = '" .$_POST["3rd"] . "';";
     $sql.= "UPDATE `players` SET `rankPoints` = `rankPoints`+600
         			WHERE `teamID` = '" .$_POST["semiFinal"] . "';";
+
+    $sql.= "UPDATE `players` SET `rankPoints` = `rankPoints`+400
+            			WHERE `teamID` = '" .$_POST["quarterFinal1"] . "';";
+    $sql.= "UPDATE `players` SET `rankPoints` = `rankPoints`+400
+                			WHERE `teamID` = '" .$_POST["quarterFinal2"] . "';";
+    $sql.= "UPDATE `players` SET `rankPoints` = `rankPoints`+400
+                			WHERE `teamID` = '" .$_POST["quarterFinal3"] . "';";
+    $sql.= "UPDATE `players` SET `rankPoints` = `rankPoints`+400
+                            WHERE `teamID` = '" .$_POST["quarterFinal4"] . "';";
+
+    $sql.= "UPDATE `players` SET `rankPoints` = `rankPoints`+100
+                			WHERE `teamID` = '" .$_POST["group1"] . "';";
+    $sql.= "UPDATE `players` SET `rankPoints` = `rankPoints`+100
+                            WHERE `teamID` = '" .$_POST["group2"] . "';";
+    $sql.= "UPDATE `players` SET `rankPoints` = `rankPoints`+100
+                            WHERE `teamID` = '" .$_POST["group3"] . "';";
+    $sql.= "UPDATE `players` SET `rankPoints` = `rankPoints`+100
+                            WHERE `teamID` = '" .$_POST["group4"] . "';";
+
 	//посылаем запрос и делаем проверку
     // удачно ли осуществился запрос
 	if(!$connect->multi_query($sql)) {
@@ -48,6 +67,51 @@ if(isset($_POST["1st"]) && isset($_POST["2nd"])) {
                                             WHERE `teamID`='" .$_POST["3rd"] . "' )
              WHERE `id` = '" .$_POST["3rd"] . "';";
 
+    $sql1.= "UPDATE `teams` SET
+                 `rankPoints` = `rankPoints` + (SELECT SUM(rankPoints) FROM players
+                                                WHERE `teamID`='" .$_POST["semiFinal"] . "' )
+                 WHERE `id` = '" .$_POST["semiFinal"] . "';";
+
+
+    $sql1 = "UPDATE `teams` SET
+             `rankPoints` = `rankPoints` + (SELECT SUM(rankPoints) FROM players
+                                            WHERE `teamID`='" .$_POST["quarterFinal1"] . "' )
+             WHERE `id` = '" .$_POST["quarterFinal1"] . "';";
+
+    $sql1.= "UPDATE `teams` SET
+             `rankPoints` = `rankPoints` + (SELECT SUM(rankPoints) FROM players
+                                            WHERE `teamID`='" .$_POST["quarterFinal2"] . "' )
+             WHERE `id` = '" .$_POST["quarterFinal2"] . "';";
+
+    $sql1.= "UPDATE `teams` SET
+             `rankPoints` = `rankPoints` + (SELECT SUM(rankPoints) FROM players
+                                            WHERE `teamID`='" .$_POST["quarterFinal3"] . "' )
+             WHERE `id` = '" .$_POST["quarterFinal3"] . "';";
+
+    $sql1.= "UPDATE `teams` SET
+                 `rankPoints` = `rankPoints` + (SELECT SUM(rankPoints) FROM players
+                                                WHERE `teamID`='" .$_POST["quarterFinal4"] . "' )
+                 WHERE `id` = '" .$_POST["quarterFinal4"] . "';";
+
+    $sql1 = "UPDATE `teams` SET
+                 `rankPoints` = `rankPoints` + (SELECT SUM(rankPoints) FROM players
+                                                WHERE `teamID`='" .$_POST["group1"] . "' )
+                 WHERE `id` = '" .$_POST["group1"] . "';";
+
+        $sql1.= "UPDATE `teams` SET
+                 `rankPoints` = `rankPoints` + (SELECT SUM(rankPoints) FROM players
+                                                WHERE `teamID`='" .$_POST["group2"] . "' )
+                 WHERE `id` = '" .$_POST["group2"] . "';";
+
+        $sql1.= "UPDATE `teams` SET
+                 `rankPoints` = `rankPoints` + (SELECT SUM(rankPoints) FROM players
+                                                WHERE `teamID`='" .$_POST["group3"] . "' )
+                 WHERE `id` = '" .$_POST["group3"] . "';";
+
+        $sql1.= "UPDATE `teams` SET
+                     `rankPoints` = `rankPoints` + (SELECT SUM(rankPoints) FROM players
+                                                    WHERE `teamID`='" .$_POST["group4"] . "' )
+                     WHERE `id` = '" .$_POST["group4"] . "';";
     if(!$connect->multi_query($sql1)) {
             // если нет выводим ошибку
     	    echo "Malfunction: (" . $mysqli->errno . ")" . $mysqli->error;

@@ -19,6 +19,8 @@
         // Главное боковое меню
         include $_SERVER['DOCUMENT_ROOT'] . '/parts/navbar.php';
       ?>
+
+      <div class="main-container">
         <!-- Хлебные крошки и кнопка Настройки -->
         <div class="navbar bg-white breadcrumb-bar">
           <nav aria-label="breadcrumb">
@@ -33,7 +35,7 @@
           <div class="row justify-content-center">
             <div class="col-12 m-2">
               <h1>Рейтинг игроков</h1>
-              <table class="table" width="100%">
+              <table class="table">
                 <thead>
                   <tr>
                     <th scope="col">#</th>
@@ -65,7 +67,12 @@
                     <td><?php echo $row["age"] ?></td>
                     <td><?php echo $row["height"] ?></td>
                     <td><?php echo $row["weight"] ?></td>
-                    <td><?php echo $row["teamID"] ?></td>
+                    <?php
+                    $sqlT = "SELECT * FROM teams WHERE categoryID =" . $row["teamID"];
+                    $resultT = $connect->query($sqlT);
+                    $team = mysqli_fetch_assoc($resultT)
+                    ?>
+                    <td><?php echo $team["name"] ?></td>
                     <td><?php echo $row["rankPoints"] ?></td>
                   </tr>
                   <?php
@@ -91,7 +98,12 @@
                     <td><?php echo $row["age"] ?></td>
                     <td><?php echo $row["height"] ?></td>
                     <td><?php echo $row["weight"] ?></td>
-                    <td><?php echo $row["teamID"] ?></td>
+                    <?php
+                    $sqlT = "SELECT * FROM teams WHERE categoryID =" . $row["teamID"];
+                    $resultT = $connect->query($sqlT);
+                    $team = mysqli_fetch_assoc($resultT)
+                    ?>
+                    <td><?php echo $team["name"] ?></td>
                     <td><?php echo $row["rankPoints"] ?></td>
                   </tr>
                   <?php
@@ -117,7 +129,12 @@
                     <td><?php echo $row["age"] ?></td>
                     <td><?php echo $row["height"] ?></td>
                     <td><?php echo $row["weight"] ?></td>
-                    <td><?php echo $row["teamID"] ?></td>
+                    <?php
+                    $sqlT = "SELECT * FROM teams WHERE categoryID =" . $row["teamID"];
+                    $resultT = $connect->query($sqlT);
+                    $team = mysqli_fetch_assoc($resultT)
+                    ?>
+                    <td><?php echo $team["name"] ?></td>
                     <td><?php echo $row["rankPoints"] ?></td>
                   </tr>
                   <?php
@@ -130,9 +147,8 @@
             </div>
           </div>
         </div>
-      
-    </div>
-
+      </div>
+     </div>
     <!-- Required vendor scripts (Do not remove) -->
     <script type="text/javascript" src="assets/js/jquery.min.js"></script>
     <script type="text/javascript" src="assets/js/popper.min.js"></script>
@@ -156,7 +172,7 @@
 
     <!-- Required theme scripts (Do not remove) -->
     <script type="text/javascript" src="assets/js/theme.js"></script>
-  </body>
-</html>
 
-   
+  </body>
+
+</html>

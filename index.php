@@ -30,14 +30,15 @@
                 <div class="mb-3 d-flex">
                   <img alt="УСЛ 3x3" src="assets/img/logo-color.png" class="avatar avatar-lg mr-1" />
                   <div>
-                    <span class="badge badge-success">beta</span>
+                    <span class="badge badge-success">alpha</span>
                   </div>
                 </div>
                 <h1 class="display-4 mb-3">Платформа, которая объединяет всех игроков</h1>
                 <p class="lead">
-                  Game USL 3x3 - это коммьюнити игроков и организаторов Украинской Стритбольной Лиги, единая система регистрации и рейтинга.
+                  GO.STREETBALL.IN.UA - это коммьюнити игроков и организаторов Украинской Стритбольной Лиги, единая система регистрации и рейтинга.
                 </p>
                 <?php
+                  // если вход не выполнен, показываем кнопку Регистрация
                   if(!isset($_COOKIE["player_id"])) {
                     ?>
                       <a href="register.php" class="mr-3">Регистрация</a><a href="login.php" class="mr-3">Вход</a>

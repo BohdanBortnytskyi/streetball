@@ -1,3 +1,5 @@
+
+
 <!-- Главное бокове меню -->
 <div class="navbar navbar-expand-lg bg-dark navbar-dark sticky-top">
 
@@ -9,15 +11,25 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="d-block d-lg-none ml-2">
+      <?php
+          // если вход выполнен
+          if(isset($_COOKIE["player_id"])) {
+            $sql = "SELECT * FROM players WHERE id=" . $_COOKIE["player_id"]; // выбираем из БД вошедшего игрока
+            $result = mysqli_query($connect, $sql); // выполняем запрос
+            $player = mysqli_fetch_assoc($result); // создаем ассоциацию с вошедшим игроком
+      ?>
       <div class="dropdown">
         <a href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <img alt="Image" src="assets/img/avatar-male-4.jpg" class="avatar" />
+          <img alt="Image" src="../assets/img/avatars/<?php if($player['photo'] == ""){echo 'noname.png';} else{echo $player['photo'];} ?>" class="avatar" />
         </a>
         <div class="dropdown-menu dropdown-menu-right">
           <a href="profile.php" class="dropdown-item">Профиль</a>
           <a href="logout.php" class="dropdown-item">Выход</a>
         </div>
       </div>
+        <?php
+          }
+       ?>
     </div>
   </div>
   <div class="collapse navbar-collapse flex-column" id="navbar-collapse">
@@ -97,13 +109,13 @@
       <hr>
     </div>
   </div>
-  <?php
+<?php
     // если вход выполнен
     if(isset($_COOKIE["player_id"])) {
       $sql = "SELECT * FROM players WHERE id=" . $_COOKIE["player_id"]; // выбираем из БД вошедшего игрока
       $result = mysqli_query($connect, $sql); // выполняем запрос
       $player = mysqli_fetch_assoc($result); // создаем ассоциацию с вошедшим игроком
-  ?>      
+?>      
   <div class="d-none d-lg-block">
     <div class="dropup">
       <a href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -118,7 +130,7 @@
   </div>
   <?php
     } else {
-      echo "Пожалуйста авторизируйтесь";
+      echo "<a href='login.php' style='color: inherit;'>Пожалуйста авторизируйтесь</a>";
     }
  ?>
 </div>

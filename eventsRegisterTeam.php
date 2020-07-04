@@ -25,8 +25,8 @@
              $rowCount = mysqli_num_rows($result);
              // запускаем цикл, который действует пока row не равен Null
              while($row = mysqli_fetch_assoc($result)) {
-                 $player['id'][] = $row['id'];
-                 $player['name'][] = $row['FullName'];
+                 $igrok['id'][] = $row['id'];
+                 $igrok['name'][] = $row['FullName'];
              }
 
       ?>
@@ -100,7 +100,7 @@
                              for($i=0; $i<$rowCount; $i++):
                           ?>
                              <!-- присваиваем value значение id, а также выводим имя игрока, полученное из базы данных -->
-                             <option value="<?php echo $player['id'][$i] ?>"><?php echo $player['name'][$i] ?></option>
+                             <option value="<?php echo $igrok['id'][$i] ?>"><?php echo $igrok['name'][$i] ?></option>
                          <?php
                             endfor;
                          ?>
@@ -117,7 +117,7 @@
                            for($i=0; $i<$rowCount; $i++):
                         ?>
                            <!-- присваиваем value значение id, а также выводим имя игрока, полученное из базы данных -->
-                           <option value="<?php echo $player['id'][$i] ?>"><?php echo $player['name'][$i] ?></option>
+                           <option value="<?php echo $igrok['id'][$i] ?>"><?php echo $igrok['name'][$i] ?></option>
                        <?php
                           endfor;
                        ?>
@@ -134,7 +134,7 @@
                            for($i=0; $i<$rowCount; $i++):
                         ?>
                            <!-- присваиваем value значение id, а также выводим имя игрока, полученное из базы данных -->
-                           <option value="<?php echo $player['id'][$i] ?>"><?php echo $player['name'][$i] ?></option>
+                           <option value="<?php echo $igrok['id'][$i] ?>"><?php echo $igrok['name'][$i] ?></option>
                        <?php
                           endfor;
                        ?>
@@ -151,7 +151,7 @@
                            for($i=0; $i<$rowCount; $i++):
                         ?>
                            <!-- присваиваем value значение id, а также выводим имя игрока, полученное из базы данных -->
-                           <option value="<?php echo $player['id'][$i] ?>"><?php echo $player['name'][$i] ?></option>
+                           <option value="<?php echo $igrok['id'][$i] ?>"><?php echo $igrok['name'][$i] ?></option>
                        <?php
                           endfor;
                        ?>

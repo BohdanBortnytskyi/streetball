@@ -5,33 +5,34 @@
     // Конфигурация БД
     include $_SERVER['DOCUMENT_ROOT'] . '/configs/db.php';
 
-    // подключаем файл настроек сайта
+    // Настройки сайта
     include $_SERVER['DOCUMENT_ROOT'] . '/configs/setup.php';
 
     // Head
     include $_SERVER['DOCUMENT_ROOT'] . '/parts/header.php';
 
-    if(isset($_POST) and $_SERVER["REQUEST_METHOD"] == "POST"){
-    // генерируем пароль
-    $password = md5($_POST['pass']);
-    // проверяем совпадение
-    if(isset($_POST["email"]) && isset($password) && $_POST["email"] != "" && $password != "") {
-      
-    $sql = "SELECT * FROM players WHERE email LIKE '" . $_POST["email"] . "' AND password LIKE '$password'";
+    // Отправка формы входа
+    if(isset($_POST) and $_SERVER["REQUEST_METHOD"] == "POST") {
+        // генерируем пароль
+        $password = md5($_POST['pass']);
+        // проверяем совпадение
+        if(isset($_POST["email"]) && isset($password) && $_POST["email"] != "" && $password != "") {
+          
+        $sql = "SELECT * FROM players WHERE email LIKE '" . $_POST["email"] . "' AND password LIKE '$password'";
 
-    $result = mysqli_query($connect, $sql);
-  
-    $players_number = mysqli_num_rows($result);
-  
-    if($players_number == 1) {
-      $player = mysqli_fetch_assoc($result); 
-      setcookie("player_id",  $player["id"], time() + 3600*24); //создаем куки на сутки  
-      header("Location: /"); // переадресация на главную
-    } else {
-      echo "<h2>Неверный логин/пароль</h2>";
+        $result = mysqli_query($connect, $sql);
+      
+        $players_number = mysqli_num_rows($result);
+      
+        if($players_number == 1) {
+          $player = mysqli_fetch_assoc($result); 
+          setcookie("player_id",  $player["id"], time() + 3600*24); //создаем куки на сутки  
+          header("Location: /profile.php"); // переадресация на главную
+        } else {
+          echo "<div class='alert alert-danger' role='alert'>Неверный email-адрес или пароль</div>";
+        }
+      }
     }
-  }
-}
   ?>
 
   <body>

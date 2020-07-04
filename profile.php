@@ -58,11 +58,9 @@
           if($player['firstName'] == "" && $player['lastName'] == "" && $player['city'] == "" && $player['gender'] == "" && 
              $player['age'] == "0" && $player['height'] == "0" && $player['weight'] == "0") {
               // то выводим следующее сообщение и переход к ссылке на редактирования профиля
-              echo "Заполните пожалуйста обязательные данные своего профиля по следующей ";
-              ?>
-              <a href="http://streetball.local/profile-settings.php">ссылке</a>   
-              <?php
-              // иначе выводим данные профиля игрока
+              echo "<div class='alert alert-primary' role='alert'>Вам нужно заполнить данные своего профиля, чтобы стать полноценным пользователем Платформы. <a href='$siteURL/profile-settings.php'>Перейти к заполнению</a></div>";
+             
+            // иначе выводим данные профиля игрока
           } else {
           ?>
          
@@ -73,7 +71,7 @@
                 <div class="media">
                   <img alt="Image" src="assets/img/avatars/<?php echo $player['photo']; ?>" class="avatar avatar-lg mt-1" />
                   <div class="media-body ml-3">
-                    <h1 class="mb-0"><?php echo $player['firstName']; ?>&nbsp;<?php echo $player['lastName']; ?><span class="badge badge-pill badge-success"><?php echo $player['rankPoints']; ?></span></h1>
+                    <h1 class="mb-0"><?php echo $player['firstName']; ?>&nbsp;<?php echo $player['lastName']; ?>&nbsp;<span class="badge badge-pill badge-success"><?php echo $player['rankPoints']; ?></span></h1>
                     <p class="lead">
                       <a href="<?php echo $player['facebook']; ?>" target="_blank"><img height="24" src="assets/img/facebook.svg" ></a>
                       <a href="<?php echo $player['instagram']; ?>" target="_blank"><img height="24" src="assets/img/instagram.svg" ></a>
@@ -84,26 +82,18 @@
                         <thead align="center">
                           <tr>
                             <th scope="col">Город</th>
-                            <th scope="col">Пол</th>
                             <th scope="col">Возраст</th>
                             <th scope="col">Рост</th>
                             <th scope="col">Вес</th>
-                            <th scope="col">О себе</th>
                           </tr>
                         </thead>
                         <tbody align="center">
                           <tr>
                             <td><?php echo $player['city']; ?></td>
-                            <td><?php echo $player['gender']; ?></td>
                             <td><?php echo $player['age']; ?></td>
                             <td><?php echo $player['height']; ?></td>
                             <td><?php echo $player['weight']; ?></td>
-                            <td><?php echo $player['about']; ?></td>
-                            <td><a href="/myteam.php?id=<?php echo $player['id'] ?>" type="button" class="btn btn-primary btn-sm">
-                            Моя команда 
-                        </a> <!-- добавляем кнопку моя команда -->
-                      </td>
-                            </tr>
+                          </tr>
                             <?php
                             }
                             ?>
@@ -159,20 +149,20 @@
                           <ul class="avatars">
 
                             <li>
-                              <a href="#" data-toggle="tooltip" title="Kenny">
-                                <img alt="Kenny Tran" class="avatar" src="assets/img/avatar-male-6.jpg" />
+                              <a href="#" data-toggle="tooltip" title="Michael Jordan">
+                                <img alt="Michael Jordan" class="avatar" src="assets/img/michael-jordan.jpg" />
                               </a>
                             </li>
 
                             <li>
-                              <a href="#" data-toggle="tooltip" title="David">
-                                <img alt="David Whittaker" class="avatar" src="assets/img/avatar-male-4.jpg" />
+                              <a href="#" data-toggle="tooltip" title="Larry Bird">
+                                <img alt="Larry Bird" class="avatar" src="assets/img/larry-bird.jpg" />
                               </a>
                             </li>
 
                             <li>
-                              <a href="#" data-toggle="tooltip" title="Marcus">
-                                <img alt="Marcus Simmons" class="avatar" src="assets/img/avatar-male-1.jpg" />
+                              <a href="#" data-toggle="tooltip" title="Magic Johnson">
+                                <img alt="Magic Johnson" class="avatar" src="assets/img/magic-johnson.jpg" />
                               </a>
                             </li>
 
@@ -203,20 +193,20 @@
                           <ul class="avatars">
 
                             <li>
-                              <a href="#" data-toggle="tooltip" title="Kenny">
-                                <img alt="Kenny Tran" class="avatar" src="assets/img/avatar-male-6.jpg" />
+                              <a href="#" data-toggle="tooltip" title="Michael Jordan">
+                                <img alt="Michael Jordan" class="avatar" src="assets/img/michael-jordan.jpg" />
                               </a>
                             </li>
 
                             <li>
-                              <a href="#" data-toggle="tooltip" title="David">
-                                <img alt="David Whittaker" class="avatar" src="assets/img/avatar-male-4.jpg" />
+                              <a href="#" data-toggle="tooltip" title="Larry Bird">
+                                <img alt="Larry Bird" class="avatar" src="assets/img/larry-bird.jpg" />
                               </a>
                             </li>
 
                             <li>
-                              <a href="#" data-toggle="tooltip" title="Marcus">
-                                <img alt="Marcus Simmons" class="avatar" src="assets/img/avatar-male-1.jpg" />
+                              <a href="#" data-toggle="tooltip" title="Magic Johnson">
+                                <img alt="Magic Johnson" class="avatar" src="assets/img/magic-johnson.jpg" />
                               </a>
                             </li>
 
@@ -262,60 +252,22 @@
                             <ul class="avatars">
 
                               <li>
-                                <a href="#" data-toggle="tooltip" title="Kenny">
-                                  <img alt="Kenny Tran" class="avatar" src="assets/img/avatar-male-6.jpg" />
-                                </a>
-                              </li>
+                              <a href="#" data-toggle="tooltip" title="Michael Jordan">
+                                <img alt="Michael Jordan" class="avatar" src="assets/img/michael-jordan.jpg" />
+                              </a>
+                            </li>
 
-                              <li>
-                                <a href="#" data-toggle="tooltip" title="David">
-                                  <img alt="David Whittaker" class="avatar" src="assets/img/avatar-male-4.jpg" />
-                                </a>
-                              </li>
+                            <li>
+                              <a href="#" data-toggle="tooltip" title="Larry Bird">
+                                <img alt="Larry Bird" class="avatar" src="assets/img/larry-bird.jpg" />
+                              </a>
+                            </li>
 
-                              <li>
-                                <a href="#" data-toggle="tooltip" title="Marcus">
-                                  <img alt="Marcus Simmons" class="avatar" src="assets/img/avatar-male-1.jpg" />
-                                </a>
-                              </li>
-
-                            </ul>
-                            <div class="d-flex align-items-center">
-                              <i class="material-icons">sports_basketball</i>
-                              <span>1200</span>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="card card-task">
-                        <div class="card-body">
-                          <div class="card-title">
-                            <a href="#">
-                              <h6 data-filter-by="text">Khimik Streetball Party 10</h6>
-                            </a>
-                            <span class="text-small">30.05.2020</span>
-                            <span class="text-small">Южный</span>
-                          </div>
-                          <div class="card-meta">
-                            <ul class="avatars">
-
-                              <li>
-                                <a href="#" data-toggle="tooltip" title="Kenny">
-                                  <img alt="Kenny Tran" class="avatar" src="assets/img/avatar-male-6.jpg" />
-                                </a>
-                              </li>
-
-                              <li>
-                                <a href="#" data-toggle="tooltip" title="David">
-                                  <img alt="David Whittaker" class="avatar" src="assets/img/avatar-male-4.jpg" />
-                                </a>
-                              </li>
-
-                              <li>
-                                <a href="#" data-toggle="tooltip" title="Marcus">
-                                  <img alt="Marcus Simmons" class="avatar" src="assets/img/avatar-male-1.jpg" />
-                                </a>
-                              </li>
+                            <li>
+                              <a href="#" data-toggle="tooltip" title="Magic Johnson">
+                                <img alt="Magic Johnson" class="avatar" src="assets/img/magic-johnson.jpg" />
+                              </a>
+                            </li>
 
                             </ul>
                             <div class="d-flex align-items-center">
@@ -338,22 +290,60 @@
                             <ul class="avatars">
 
                               <li>
-                                <a href="#" data-toggle="tooltip" title="Kenny">
-                                  <img alt="Kenny Tran" class="avatar" src="assets/img/avatar-male-6.jpg" />
-                                </a>
-                              </li>
+                              <a href="#" data-toggle="tooltip" title="Michael Jordan">
+                                <img alt="Michael Jordan" class="avatar" src="assets/img/michael-jordan.jpg" />
+                              </a>
+                            </li>
+
+                            <li>
+                              <a href="#" data-toggle="tooltip" title="Larry Bird">
+                                <img alt="Larry Bird" class="avatar" src="assets/img/larry-bird.jpg" />
+                              </a>
+                            </li>
+
+                            <li>
+                              <a href="#" data-toggle="tooltip" title="Magic Johnson">
+                                <img alt="Magic Johnson" class="avatar" src="assets/img/magic-johnson.jpg" />
+                              </a>
+                            </li>
+
+                            </ul>
+                            <div class="d-flex align-items-center">
+                              <i class="material-icons">sports_basketball</i>
+                              <span>1200</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="card card-task">
+                        <div class="card-body">
+                          <div class="card-title">
+                            <a href="#">
+                              <h6 data-filter-by="text">Khimik Streetball Party 10</h6>
+                            </a>
+                            <span class="text-small">30.05.2020</span>
+                            <span class="text-small">Южный</span>
+                          </div>
+                          <div class="card-meta">
+                            <ul class="avatars">
 
                               <li>
-                                <a href="#" data-toggle="tooltip" title="David">
-                                  <img alt="David Whittaker" class="avatar" src="assets/img/avatar-male-4.jpg" />
-                                </a>
-                              </li>
+                              <a href="#" data-toggle="tooltip" title="Michael Jordan">
+                                <img alt="Michael Jordan" class="avatar" src="assets/img/michael-jordan.jpg" />
+                              </a>
+                            </li>
 
-                              <li>
-                                <a href="#" data-toggle="tooltip" title="Marcus">
-                                  <img alt="Marcus Simmons" class="avatar" src="assets/img/avatar-male-1.jpg" />
-                                </a>
-                              </li>
+                            <li>
+                              <a href="#" data-toggle="tooltip" title="Larry Bird">
+                                <img alt="Larry Bird" class="avatar" src="assets/img/larry-bird.jpg" />
+                              </a>
+                            </li>
+
+                            <li>
+                              <a href="#" data-toggle="tooltip" title="Magic Johnson">
+                                <img alt="Magic Johnson" class="avatar" src="assets/img/magic-johnson.jpg" />
+                              </a>
+                            </li>
 
                             </ul>
                             <div class="d-flex align-items-center">

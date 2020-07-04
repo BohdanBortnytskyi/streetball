@@ -108,25 +108,6 @@
 
       </li>
 
-      <li class="nav-item">
-
-          <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-5" aria-controls="submenu-2">Прошедшие турниры</a>
-          <div id="submenu-5" class="collapse">
-            <ul class="nav nav-small flex-column">
-
-              <li class="nav-item">
-                <a class="nav-link" href="/admin/eventsList.php">Все прошедшие турниры</a>
-              </li>
-
-              <li class="nav-item">
-                <a class="nav-link" href="/admin/eventsNew.php">Добавить прошедший турнир</a>
-              </li>
-
-            </ul>
-          </div>
-
-      </li>
-
     </ul>
 
   </div>
@@ -141,13 +122,13 @@
         if(isset($_COOKIE["user_id"])) {
     ?>
       <a href="/admin/exit.php" class="btn btn-dark bt-lg">
-        <img alt="Image" src="/admin/assets/img/avatar-male-4.jpg" class="avatar" />
+        <img alt="Image" src="/assets/img/avatars/noname.png" class="avatar" />
         <span>Выйти</span>
       </a>
       <?php
             } else {
       ?>
-            <img alt="Image" src="/admin/assets/img/avatar-male-4.jpg" class="avatar" />
+            <img alt="Image" src="/assets/img/avatars/noname.png" class="avatar" />
             <button class="btn btn-dark bt-lg" onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button>
       <?php
             }

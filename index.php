@@ -37,7 +37,13 @@
                 <p class="lead">
                   Game USL 3x3 - это коммьюнити игроков и организаторов Украинской Стритбольной Лиги, единая система регистрации и рейтинга.
                 </p>
-                <a href="register.php" class="mr-3">Регистрация</a><a href="login.php" class="mr-3">Вход</a>
+                <?php
+                  if(!isset($_COOKIE["player_id"])) {
+                    ?>
+                      <a href="register.php" class="mr-3">Регистрация</a><a href="login.php" class="mr-3">Вход</a>
+                    <?php
+                  }
+                ?>
               </section>
             </div>
           </div>

@@ -5,58 +5,72 @@
     // Конфигурация БД
     include $_SERVER['DOCUMENT_ROOT'] . '/configs/db.php';
 
+    // Настройки сайта
+    include $_SERVER['DOCUMENT_ROOT'] . '/configs/setup.php';
+
     // Head
     include $_SERVER['DOCUMENT_ROOT'] . '/parts/header.php';
     
-    // После клика на ссылку подтверждения регистрации 
+    // Переход по ссылке подтверждения регистрации 
     if(isset($_GET['u_code'])) {
-    $sql = "SELECT * FROM players WHERE confirm='" . $_GET['u_code'] . "'";
-
-    $result = $connect->query($sql);
+      $sql = "SELECT * FROM players WHERE confirm='" . $_GET['u_code'] . "'";
+      $result = $connect->query($sql);
+      
       //Верифириуем игрока
-     if($result->num_rows > 0) {
-     $player = mysqli_fetch_assoc($result); 
-     $sql1 = "UPDATE `players` SET `verified` = '1' WHERE `id` =" . $player['id'];
-     if($connect->query($sql1)) {
-         echo "Игрок верифицирован!";
-       } 
-         // удаление подтверждения почты
-        //$sql2 = "UPDATE `players` SET `confirm` = '' WHERE `id` =" . $user['id'];
-       //if ($conn->query($sql2)) {
-    
-       //}
+      if($result->num_rows > 0) {
+        $player = mysqli_fetch_assoc($result); 
+        $sql = "UPDATE `players` SET `verified` = '1' WHERE `id` =" . $player['id'];
+        if($connect->query($sql)) {
+           header("Location: /login.php"); // переадресация на страницу входа
+           echo "<div class='alert alert-primary' role='alert'>Ваш профиль подтвержден. Теперь вы можете <a href='login.php'>войти на платформу</a></div>";
+         } 
+           // удаление подтверждения почты
+          //$sql2 = "UPDATE `players` SET `confirm` = '' WHERE `id` =" . $user['id'];
+         //if ($conn->query($sql2)) {
 
+         //}
       }
-   }
+    }
     
-    if(isset($_POST) and $_SERVER["REQUEST_METHOD"] == "POST"){
-    // генерируем пароль
-    $password = md5($_POST['pass']);
-    $u_code = generateRandomString(20);
+    // Отправка формы регистрации
+    if(isset($_POST) and $_SERVER["REQUEST_METHOD"] == "POST") {
+    
+      $sql = "SELECT * FROM players WHERE email = '" . $_POST["email"] . "'";
+      $result = $connect->query($sql);
+      if($result->num_rows == 0) {
 
-    $sql2 = "INSERT INTO players (email, password, confirm) VALUES ('" . $_POST["email"] . "', '" . $password . "', '$u_code')";
-    // отправляем ссылку
-    if($connect->query($sql2)) {
-      echo " Если письмо не пришло, перейдите по следующей "
+        // шифруем пароль
+        $password = md5($_POST['pass']);
+
+        // генерируем случайную строку
+        $u_code = generateRandomString(20);
+
+        $sql = "INSERT INTO players (email, password, confirm) VALUES ('" . $_POST["email"] . "', '" . $password . "', '$u_code')";
+        // отправляем ссылку
+        if($connect->query($sql)) {
+          echo "<div class='alert alert-primary' role='alert'>На указанный адрес выслано письмо со ссылкой для подтверждения регистрации. Если письмо не пришло, попробуйте "
     ?>
-    <a href="http://streetball.local/resend.php">ссылке</a>   
+          <a href="<?php echo $siteURL; ?>/resend.php">отправить повторно</a></div>   
     <?php
-        $link = "<a href='http://streetball.local/register.php?u_code=$u_code'>Confirm</a>";
-        mail($_POST['email'], 'Register', $link);
+          $link = "Подтверите регистрацию, перейдя по ссылке " . $siteURL . "/register.php?u_code=$u_code";
+          mail($_POST['email'], 'Регистрация на платформе УСЛ 3х3', $link);
+        }
+
+      } else {
+        echo "<div class='alert alert-danger' role='alert'>Такой email-адрес уже есть в базе данных!</div>";
+      }
     }
 
-  }
-
-  // Функция-генеретор случайной строки
-  function generateRandomString($length = 10) {
-    $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-    $charactersLength = strlen($characters);
-    $randomString = '';
-    for ($i = 0; $i < $length; $i++) {
-        $randomString .= $characters[rand(0, $charactersLength - 1)];
+    // Функция-генеретор случайной строки
+    function generateRandomString($length = 10) {
+      $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+      $charactersLength = strlen($characters);
+      $randomString = '';
+      for ($i = 0; $i < $length; $i++) {
+          $randomString .= $characters[rand(0, $charactersLength - 1)];
+      }
+      return $randomString;
     }
-    return $randomString;
-  }
   ?>
 
   <body>

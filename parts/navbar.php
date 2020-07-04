@@ -77,10 +77,6 @@
 
       </li>
 
-      <li class="nav-item">
-        <a class="nav-link" href="#">Еще какой-то пункт</a>
-      </li>
-
     </ul>
     <hr>
     <div class="d-none d-lg-block w-100">

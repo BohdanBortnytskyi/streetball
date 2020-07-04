@@ -79,7 +79,7 @@
               </div>
               <div class="mt-2 mb-4">
                 <!-- Делаем переход на регистрацию команды -->
-                <a href="/eventsRegisterTeam.php?id=<?php echo $_GET['id'] ?>" class="btn btn-primary btn-block" type="button" aria-haspopup="true" aria-expanded="false">
+                <a href="/eventsRegisterTeam.php?id=<?php echo $event['id']; ?>" class="btn btn-primary btn-block" type="button" aria-haspopup="true" aria-expanded="false">
                   Зарегистрировать команду на турнир!
                 </a>
               </div>
@@ -166,17 +166,14 @@
                         <div class="card-body">
                           <div class="card-title">
                             <a href="#">
-                              <h6 data-filter-by="text"><?php echo $teams['name']; ?><span class="badge badge-pill badge-success"><?php echo $teams['rankPoints']; ?></span></h6>
+                              <h6 data-filter-by="text"><?php echo $teams['name']; ?>&nbsp;<span class="badge badge-pill badge-success"><?php echo $teams['rankPoints']; ?></span></h6>
                             </a>
                           </div>
                           <div class="card-meta">
-                            <ul class="avatars">
-
-                              <li>
-                               <h6 data-filter-by="text"><?php echo $teams['city']; ?></h6>
-                              </li>
-
-                            </ul>
+                            <div class="d-flex align-items-center">
+                              <i class="material-icons">sports_basketball</i>
+                              <span><?php echo $teams['city']; ?></span>
+                            </div>
                           </div>
                         </div>
                       </div>
@@ -189,7 +186,7 @@
                 <div class="tab-pane fade" id="results" role="tabpanel" data-filter-list="content-list-body">
                   <p>Организатор еще не добавил результаты турнира</p>
                   <p>
-                    <a href="events-results.php" class="btn btn-primary">Отправить результаты</a>
+                    <a href="eventsResultsForm.php?id=<?php echo $event['id']; ?>" class="btn btn-primary">Отправить результаты</a>
                   </p>
                 <!--end of tab-->
               </div>

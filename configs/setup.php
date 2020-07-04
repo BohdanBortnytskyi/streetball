@@ -1,6 +1,7 @@
 <?php
 
-// Общие настройки
+	// Адрес сайта
+	$siteURL = "http://streetball.local";
 
 	$cookie_player_id = null; // id игрока в куки
 

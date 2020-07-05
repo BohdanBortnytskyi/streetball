@@ -7805,7 +7805,7 @@ form.dropzone {
 
 [class*='filter-list']:after {
   pointer-events: none;
-  content: 'No matching results';
+  content: 'Ничего не найдено';
   border-radius: 0.5rem;
   display: flex;
   background: #e9ecef;

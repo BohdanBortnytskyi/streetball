@@ -5,6 +5,14 @@
     // Конфигурация БД
     include $_SERVER['DOCUMENT_ROOT'] . '/configs/db.php';
 
+    // подключаем файл настроек сайта
+    include $_SERVER['DOCUMENT_ROOT'] . '/configs/setup.php';
+
+    // если вход не выполнен, то переадресация на страницу входа
+    if($cookie_player_id == null) {
+      header("Location: /login.php");
+    }
+
     // Head
     include $_SERVER['DOCUMENT_ROOT'] . '/parts/header.php';
   ?>
@@ -35,16 +43,16 @@
         <!-- Блок контента -->
         <div class="container">
           <div class="row justify-content-center">
-            <div class="col-12 m-2">
+            <div class="col-8">
               <h1>Регистрация команды на турнир</h1>
-              <form>
+              <form action="https://echo.htmlacademy.ru/" method="POST">
                 <div class="form-group row align-items-center">
-                  <label class="col-2">Название команды</label>
+                  <label class="col-3">Название</label>
                   <div class="col">
-                    <input type="text" placeholder="Название команды" class="form-control" required />
+                    <input type="text" placeholder="Название команды" class="form-control" name="team-name" required />
                   </div>
                 </div>
-                <div class="form-group row align-items-center">
+                <!-- <div class="form-group row align-items-center">
                   <label class="col-2">Категория</label>
                   <div class="col-3">
                     <select class="form-control" required>
@@ -53,39 +61,105 @@
                       <option value='w'>Женщины</option>
                     </select>
                   </div>
-                </div>
+                </div> -->
                 <div class="form-group row align-items-center">
-                  <label class="col-2">Игрок 1</label>
+                  <label class="col-3">Игрок 1*</label>
                   <div class="col">
-                    <input type="text" placeholder="Игрок 1" class="form-control" required />
+                    <span id="player1">Добавить игрока</span>
+                    <button style="display: inline-block;" class="btn btn-round player-add player1-add" type="button" data-toggle="collapse" data-target="#floating-chat" aria-expanded="false">
+                      <i class="material-icons">add</i>
+                    </button>
+                    <input type="hidden" id="input-player1" name="player1" value="" required />
                   </div>
                 </div>
                 <div class="form-group row align-items-center">
-                  <label class="col-2">Игрок 2</label>
+                  <label class="col-3">Игрок 2*</label>
                   <div class="col">
-                    <input type="text" placeholder="Игрок 2" class="form-control" required />
+                    <span id="player2">Добавить игрока</span>
+                    <button style="display: inline-block;" class="btn btn-round player-add player2-add" type="button" data-toggle="collapse" data-target="#floating-chat" aria-expanded="false">
+                      <i class="material-icons">add</i>
+                    </button>
+                    <input type="hidden" id="input-player2" name="player2" value="" required />
                   </div>
                 </div>
                 <div class="form-group row align-items-center">
-                  <label class="col-2">Игрок 3</label>
+                  <label class="col-3">Игрок 3*</label>
                   <div class="col">
-                    <input type="text" placeholder="Игрок 3" class="form-control" required />
+                    <span id="player3">Добавить игрока</span>
+                    <button style="display: inline-block;" class="btn btn-round player-add player3-add" type="button" data-toggle="collapse" data-target="#floating-chat" aria-expanded="false">
+                      <i class="material-icons">add</i>
+                    </button>
+                    <input type="hidden" id="input-player3" name="player3" value="" required />
                   </div>
                 </div>
                 <div class="form-group row align-items-center">
-                  <label class="col-2">Игрок 4 (не обяз.)</label>
+                  <label class="col-3">Игрок 4</label>
                   <div class="col">
-                    <input type="text" placeholder="Игрок 4" class="form-control" required />
+                    <span id="player4">Добавить игрока</span>
+                    <button style="display: inline-block;" class="btn btn-round player-add player4-add" type="button" data-toggle="collapse" data-target="#floating-chat" aria-expanded="false">
+                      <i class="material-icons">add</i>
+                    </button>
+                    <input type="hidden" id="input-player4" name="player4" value="" />
                   </div>
                 </div>
                 <div class="row justify-content-end">
-                  <button type="submit" class="btn btn-primary">Сохранить</button>
+                  <i class="m-2">Ответственность за свою жизнь и здоровье, а также личные вещи, на турнирах УСЛ 3х3 беру на себя.</i>
+                  <button type="submit" class="btn btn-primary">Отправить</button>
                 </div>
               </form>
             </div>
           </div>
         </div>
+
+        <div class="collapse sidebar-floating" id="floating-chat">
+          <div class="sidebar-content">
+            <div class="chat-module" data-filter-list="chat-module-body">
+              <div class="chat-module-top1">
+                <form>
+                  <div class="input-group input-group-round">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">
+                        <i class="material-icons">search</i>
+                      </span>
+                    </div>
+                    <input type="search" class="form-control filter-list-input" placeholder="Поиск игроков" aria-label="Поиск игроков">
+                  </div>
+                </form>
+                <div class="chat-module-body">
+
+                  <?php
+                    $i = 0;
+                    // выводим список юзеров
+                    $sql = "SELECT * FROM players WHERE id!=" . $_COOKIE["player_id"] . " AND verified=1"; // запрос к БД
+                    $result = mysqli_query($connect, $sql); // выполнение запроса к БД
+                    $players_number = mysqli_num_rows($result); // количество записей в таблице users
+                    // выводим всех юзеров
+                    while($i < $players_number) { 
+                      $players_mass[$i] = mysqli_fetch_assoc($result); // создание массива с пользователями
+                      // вывод списка игроков
+                  ?>
+                      <div class="media chat-item" data-playerid="<?php echo $players_mass[$i]['id']; ?>" data-playername="<?php echo $players_mass[$i]['firstName'] . ' ' . $players_mass[$i]['lastName']; ?>" data-playerphoto="<?php echo $players_mass[$i]['photo']; ?>" onclick="addPlayer(this)" style="cursor:pointer;">
+                        <span class="d-flex align-items-center">
+                          <img alt="<?php echo $players_mass[$i]['firstName'] . ' ' . $players_mass[$i]['lastName']; ?>" src="<?php echo $siteURL . '/assets/img/avatars/' . $players_mass[$i]['photo']; ?>" class="avatar mr-2">
+                          <span class="h6 mb-0 SPAN-filter-by-text" data-filter-by="text"><?php echo $players_mass[$i]['firstName'] . ' ' . $players_mass[$i]['lastName']; ?></span>
+                        </span>
+                      </div>
+                  <?php
+                      $i = $i + 1; 
+                    }
+                  ?>
+
+                </div>
+              </div>
+              
+            </div>
+          </div>
+        </div>
+
     </div>
+
+    <!-- Custom scripts -->
+    <script type="text/javascript" src="assets/js/custom.js"></script>
 
     <!-- Required vendor scripts (Do not remove) -->
     <script type="text/javascript" src="assets/js/jquery.min.js"></script>

@@ -44,54 +44,42 @@
       </li>
 
       <li class="nav-item">
-
         <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-2" aria-controls="submenu-2">Рейтинг игроков</a>
         <div id="submenu-2" class="collapse">
           <ul class="nav nav-small flex-column">
-
             <li class="nav-item">
-              <a class="nav-link" href="http://streetball.local/players-rating.php?gender=m">Мужчины</a>
+              <a class="nav-link" href="#">Мужчины</a>
             </li>
-
             <li class="nav-item">
-              <a class="nav-link" href="http://streetball.local/players-rating.php?gender=u">Юноши</a>
+              <a class="nav-link" href="#">Юноши</a>
             </li>
-
             <li class="nav-item">
-              <a class="nav-link" href="http://streetball.local/players-rating.php?gender=w">Женщины</a>
+              <a class="nav-link" href="#">Женщины</a>
             </li>
-
           </ul>
         </div>
-
       </li>
 
       <li class="nav-item">
-
         <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-3" aria-controls="submenu-3">Рейтинг команд</a>
         <div id="submenu-3" class="collapse">
           <ul class="nav nav-small flex-column">
-
             <li class="nav-item">
-              <a class="nav-link" href="http://streetball.local/team-rating.php?gender=m">Мужчины</a>
+              <a class="nav-link" href="#">Мужчины</a>
             </li>
-
             <li class="nav-item">
-              <a class="nav-link" href="http://streetball.local/team-rating.php?gender=u">Юноши</a>
+              <a class="nav-link" href="#">Юноши</a>
             </li>
-
             <li class="nav-item">
-              <a class="nav-link" href="http://streetball.local/team-rating.php?gender=w">Женщины</a>
+              <a class="nav-link" href="#">Женщины</a>
             </li>
-
           </ul>
         </div>
-
       </li>
 
     </ul>
     <hr>
-    <div class="d-none d-lg-block w-100">
+    <div class=" d-lg-block w-100">
       <ul class="nav nav-small flex-column mt-2">
         <li class="nav-item">
           <a href="#" class="nav-link">О платформе</a>
@@ -130,7 +118,7 @@
   </div>
   <?php
     } else {
-      echo "<a href='login.php' style='color: inherit;'>Пожалуйста авторизируйтесь</a>";
+      echo "<a href='login.php' style='color: inherit;'>Пожалуйста, авторизируйтесь</a>";
     }
  ?>
 </div>

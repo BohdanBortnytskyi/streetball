@@ -114,7 +114,13 @@
         <div class="collapse sidebar-floating" id="floating-chat">
           <div class="sidebar-content">
             <div class="chat-module" data-filter-list="chat-module-body">
-              <div class="chat-module-top1">
+              <div class="row justify-content-between">
+                  <h2>Поиск игроков</h2>
+                  <button id="search-close" type="button" class="close btn btn-round" onclick="searchClose()" aria-label="Закрыть" title="Закрыть">
+                    <i class="material-icons">close</i>
+                  </button>
+                </div>
+              <div class="chat-module-top">
                 <form>
                   <div class="input-group input-group-round">
                     <div class="input-group-prepend">
@@ -122,7 +128,7 @@
                         <i class="material-icons">search</i>
                       </span>
                     </div>
-                    <input type="search" class="form-control filter-list-input" placeholder="Поиск игроков" aria-label="Поиск игроков">
+                    <input type="search" class="form-control filter-list-input" placeholder="Введите имя игрока" aria-label="Поиск игроков">
                   </div>
                 </form>
                 <div class="chat-module-body">

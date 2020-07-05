@@ -27,10 +27,6 @@ function addPlayer(element) {
   var playerName = element.dataset.playername; //
   var playerPhoto = element.dataset.playerphoto;
 
-  // var player1id = null;
-  // var player2id = null;
-  // var player3id = null;
-  // var player4id = null;
   var inputPlayer1 = document.querySelector("#input-player1");
   var inputPlayer2 = document.querySelector("#input-player2");
   var inputPlayer3 = document.querySelector("#input-player3");
@@ -47,8 +43,7 @@ function addPlayer(element) {
       inputPlayer1.value = playerID;
 
       // закрываем окно поиска игроков
-      var modalSearch = document.querySelector("#floating-chat");
-      modalSearch.classList.remove("show");
+      searchClose();
     }
     
   }
@@ -65,8 +60,7 @@ function addPlayer(element) {
       inputPlayer2.value = playerID;
 
       // закрываем окно поиска игроков
-      var modalSearch = document.querySelector("#floating-chat");
-      modalSearch.classList.remove("show");
+      searchClose();
     } else {
       alert('Этот игрока уже добавлен!');
     }
@@ -84,8 +78,7 @@ function addPlayer(element) {
       inputPlayer3.value = playerID;
 
       // закрываем окно поиска игроков
-      var modalSearch = document.querySelector("#floating-chat");
-      modalSearch.classList.remove("show");
+      searchClose();
     } else {
       alert('Этот игрока уже добавлен!');
     }
@@ -103,12 +96,18 @@ function addPlayer(element) {
       inputPlayer4.value = playerID;
 
       // закрываем окно поиска игроков
-      var modalSearch = document.querySelector("#floating-chat");
-      modalSearch.classList.remove("show");
+      searchClose();  
     } else {
       alert('Этот игрока уже добавлен!');
     }
     
   }
   
+}
+
+// Закрытие окна поиска игроков
+function searchClose() {
+  // закрываем окно поиска игроков
+      var modalSearch = document.querySelector("#floating-chat");
+      modalSearch.classList.remove("show");
 }

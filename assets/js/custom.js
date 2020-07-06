@@ -37,7 +37,7 @@ function addPlayer(element) {
     if(playerID != inputPlayer2.value && playerID != inputPlayer3.value && playerID != inputPlayer4.value) {
       // добавляем ссылку на игрока и имя
       var spanPlayer1 = document.querySelector("#player1"); // выбираем по ID
-      spanPlayer1.innerHTML = "<img alt='Фото Игрок 1' class='avatar filter-by-alt' src='assets/img/avatars/" + playerPhoto + "'><a href='profile.php?id=" + playerID + "'>" + playerName + "</a>"; // изменяем содержимое
+      spanPlayer1.innerHTML = "<img alt='Фото Игрок 1' class='avatar filter-by-alt' src='assets/img/avatars/" + playerPhoto + "'><a href='player-profile.php?id=" + playerID + "'>" + playerName + "</a>"; // изменяем содержимое
 
       // добавляем в инпут айди игрока
       inputPlayer1.value = playerID;
@@ -54,7 +54,7 @@ function addPlayer(element) {
     if(playerID != inputPlayer1.value && playerID != inputPlayer3.value && playerID != inputPlayer4.value) {
       // добавляем ссылку на игрока и имя
       var spanPlayer2 = document.querySelector("#player2"); // выбираем по ID
-      spanPlayer2.innerHTML = "<img alt='Фото Игрок 2' class='avatar filter-by-alt' src='assets/img/avatars/" + playerPhoto + "'><a href='profile.php?id=" + playerID + "'>" + playerName + "</a>"; // изменяем содержимое
+      spanPlayer2.innerHTML = "<img alt='Фото Игрок 2' class='avatar filter-by-alt' src='assets/img/avatars/" + playerPhoto + "'><a href='player-profile.php?id=" + playerID + "'>" + playerName + "</a>"; // изменяем содержимое
 
       // добавляем в инпут айди игрока
       inputPlayer2.value = playerID;
@@ -72,7 +72,7 @@ function addPlayer(element) {
     if(playerID != inputPlayer1.value && playerID != inputPlayer2.value && playerID != inputPlayer4.value) {
       // добавляем ссылку на игрока и имя
       var spanPlayer3 = document.querySelector("#player3"); // выбираем по ID
-      spanPlayer3.innerHTML = "<img alt='Фото Игрок 3' class='avatar filter-by-alt' src='assets/img/avatars/" + playerPhoto + "'><a href='profile.php?id=" + playerID + "'>" + playerName + "</a>"; // изменяем содержимое
+      spanPlayer3.innerHTML = "<img alt='Фото Игрок 3' class='avatar filter-by-alt' src='assets/img/avatars/" + playerPhoto + "'><a href='player-profile.php?id=" + playerID + "'>" + playerName + "</a>"; // изменяем содержимое
 
       // добавляем в инпут айди игрока
       inputPlayer3.value = playerID;
@@ -90,7 +90,7 @@ function addPlayer(element) {
     if(playerID != inputPlayer1.value && playerID != inputPlayer2.value && playerID != inputPlayer3.value) {
       // добавляем ссылку на игрока и имя
       var spanPlayer4 = document.querySelector("#player4"); // выбираем по ID
-      spanPlayer4.innerHTML = "<img alt='Фото Игрок 4' class='avatar filter-by-alt' src='assets/img/avatars/" + playerPhoto + "'><a href='profile.php?id=" + playerID + "'>" + playerName + "</a>"; // изменяем содержимое
+      spanPlayer4.innerHTML = "<img alt='Фото Игрок 4' class='avatar filter-by-alt' src='assets/img/avatars/" + playerPhoto + "'><a href='player-profile.php?id=" + playerID + "'>" + playerName + "</a>"; // изменяем содержимое
 
       // добавляем в инпут айди игрока
       inputPlayer4.value = playerID;

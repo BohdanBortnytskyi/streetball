@@ -15,6 +15,39 @@
 
     // Head
     include $_SERVER['DOCUMENT_ROOT'] . '/parts/header.php';
+
+    // Отправка формы регистрации команды
+    //if(isset($_GET["event_id"])) {
+      if(isset($_POST) and $_SERVER["REQUEST_METHOD"] == "POST") {
+
+        $sql = "INSERT INTO teams (name, event_id, player1, player2, player3, player4) VALUES ('" . $_POST["team-name"] . "', '" . $_POST["event_id"] . "', '" . $_POST["player1"] . "', '" . $_POST["player2"] . "', '" . $_POST["player3"] . "', '" . $_POST["player4"] . "')";
+
+        if($connect->query($sql)) {
+
+          // выбираем ивент по айди
+          $sql = "SELECT * FROM calendar WHERE id =" . $_POST["event_id"];
+          $result = $connect->query($sql);
+          $event = mysqli_fetch_assoc($result);
+
+          // выбираем игроков по айди и отправляем им имейлы
+          $sql = "SELECT * FROM players WHERE id =" . $_POST["player1"];
+          $result = $connect->query($sql);
+          $player = mysqli_fetch_assoc($result); 
+
+          mail($player["email"], 'Регистрация на турнир УСЛ 3х3', 'Вы зарегистрированы на турнир ' . $event["name"] . ' в составе команды ' . $_POST["team-name"]);
+          
+          // переадресация на страницу успешной регистрации
+          header("Location: /events-register-success.php?event_id=" . $_POST["event_id"]);
+          // echo "<div class='alert alert-primary' role='alert'>Команда зарегистрирована</div>";
+        } else {
+          echo "<div class='alert alert-danger' role='alert'>Ошибка базы данных</div>";
+        }
+
+      }
+   // } else { // если айди ивента не задан
+     // header("Location: /calendar.php");
+    //}
+
   ?>
 
   <body>
@@ -28,13 +61,20 @@
 
       <div class="main-container">
 
+         <?php
+          // Выводим турнир согласно гет запросу
+          $sql = "SELECT * FROM calendar WHERE id =" . $_GET["event_id"];
+          $result = $connect->query($sql);
+          $event = mysqli_fetch_assoc($result); 
+         ?>
+
         <!-- Хлебные крошки и кнопка Настройки -->
         <div class="navbar bg-white breadcrumb-bar">
           <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
               <li class="breadcrumb-item"><a href="/">Главная</a></li>
               <li class="breadcrumb-item"><a href="calendar.php">Календарь турниров</a></li>
-              <li class="breadcrumb-item"><a href="events-single.php">Khimik Streetball Party vol. 11</a></li>
+              <li class="breadcrumb-item"><a href="events-single.php?id=<?php echo $_GET["event_id"]; ?>"><?php echo $event['name']; ?></a></li>
               <li class="breadcrumb-item active" aria-current="page">Регистрация команды</li>
             </ol>
           </nav>
@@ -43,15 +83,16 @@
         <!-- Блок контента -->
         <div class="container">
           <div class="row justify-content-center">
-            <div class="col-8">
-              <h1>Регистрация команды на турнир</h1>
-              <form action="https://echo.htmlacademy.ru/" method="POST">
+            <div class="col-12 m-2">
+              <h1>Регистрация команды</h1>
+              <form action="events-register-team.php" method="POST">
                 <div class="form-group row align-items-center">
                   <label class="col-3">Название</label>
                   <div class="col">
                     <input type="text" placeholder="Название команды" class="form-control" name="team-name" required />
                   </div>
                 </div>
+                <input type="hidden" id="event_id" name="event_id" value="<?php echo $_GET["event_id"]; ?>" />
                 <!-- <div class="form-group row align-items-center">
                   <label class="col-2">Категория</label>
                   <div class="col-3">
@@ -102,8 +143,8 @@
                     <input type="hidden" id="input-player4" name="player4" value="" />
                   </div>
                 </div>
-                <div class="row justify-content-end">
-                  <i class="m-2">Ответственность за свою жизнь и здоровье, а также личные вещи, на турнирах УСЛ 3х3 беру на себя.</i>
+                <div class="row justify-content-end m-2">
+                  <i class="m-2">Ответственность за свою жизнь и здоровье, а также личные вещи, на турнирах УСЛ 3х3 каждый игрок команды берет на себя.</i>
                   <button type="submit" class="btn btn-primary">Отправить</button>
                 </div>
               </form>

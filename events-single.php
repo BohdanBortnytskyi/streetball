@@ -53,7 +53,7 @@
                       <table class="table table-sm">
                         <thead align="center">
                           <tr>
-                            <th scope="col">Дата и время начало</th>
+                            <th scope="col">Дата</th>
                             <th scope="col">Город</th>
                             <th scope="col">Локация</th>
                             <th scope="col">Команд</th>
@@ -66,7 +66,7 @@
                             <td><?php echo $event['location']; ?></td><!-- Локация проведения турнира -->
                             <?php
                             // Выводим колличество команд согласно гет запросу турнира
-                            $sqlTeams = "SELECT * FROM registeredteams WHERE tournamentID =" . $_GET["id"];
+                            $sqlTeams = "SELECT * FROM teams WHERE event_id =" . $_GET["id"];
                               $resultTeams = $connect->query($sqlTeams);
                               $count = mysqli_num_rows($resultTeams);
                              ?>
@@ -79,7 +79,7 @@
               </div>
               <div class="mt-2 mb-4">
                 <!-- Делаем переход на регистрацию команды -->
-                <a href="/eventsRegisterTeam.php?id=<?php echo $event['id']; ?>" class="btn btn-primary btn-block" type="button" aria-haspopup="true" aria-expanded="false">
+                <a href="/events-register-team.php?event_id=<?php echo $event['id']; ?>" class="btn btn-primary btn-block" type="button" aria-haspopup="true" aria-expanded="false">
                   Зарегистрировать команду на турнир!
                 </a>
               </div>

@@ -8,6 +8,11 @@
     // подключаем файл настроек сайта
     include $_SERVER['DOCUMENT_ROOT'] . '/configs/setup.php';
 
+    // если вход не выполнен, то переадресация на страницу входа
+    if($cookie_player_id == null) {
+      header("Location: /login.php");
+    }
+
     // Head
     include $_SERVER['DOCUMENT_ROOT'] . '/parts/header.php';
   ?>
@@ -19,6 +24,12 @@
       <?php
         // Главное боковое меню
         include $_SERVER['DOCUMENT_ROOT'] . '/parts/navbar.php';
+
+        // Выводим турнир согласно гет запросу
+        $sql = "SELECT * FROM calendar WHERE id =" . $_GET["event_id"];
+        $result = $connect->query($sql);
+        $event = mysqli_fetch_assoc($result); 
+
       ?>
 
       <div class="main-container">
@@ -27,24 +38,10 @@
           <div class="row justify-content-center">
             <div class="col-lg-11 col-xl-9">
               <section class="py-4 py-lg-5">
-                <div class="mb-3 d-flex">
-                  <img alt="УСЛ 3x3" src="assets/img/logo-color.png" class="avatar avatar-lg mr-1" />
-                  <div>
-                    <span class="badge badge-success">alpha</span>
-                  </div>
-                </div>
-                <h1 class="display-4 mb-3">Платформа, которая объединяет всех игроков</h1>
+                <h1 class="display-4 mb-3">Команда зарегистрирована!</h1>
                 <p class="lead">
-                  <i>go.streetball.in.ua</i> - это коммьюнити игроков и организаторов Украинской Стритбольной Лиги, единая система регистрации и рейтинга.
+                  Желаем удачи на турнире "<?php echo $event['name'] ?>"!
                 </p>
-                <?php
-                  // если вход не выполнен, показываем кнопку Регистрация
-                  if(!isset($_COOKIE["player_id"])) {
-                    ?>
-                      <a href="register.php" class="mr-3">Регистрация</a><a href="login.php" class="mr-3">Вход</a>
-                    <?php
-                  }
-                ?>
               </section>
             </div>
           </div>

@@ -21,7 +21,7 @@
         $player = mysqli_fetch_assoc($result); 
         $sql = "UPDATE `players` SET `verified` = '1' WHERE `id` =" . $player['id'];
         if($connect->query($sql)) {
-           header("Location: /login.php"); // переадресация на страницу входа
+           //header("Location: /login.php"); // переадресация на страницу входа
            echo "<div class='alert alert-primary' role='alert'>Ваш профиль подтвержден. Теперь вы можете <a href='login.php'>войти на платформу</a></div>";
          } 
            // удаление подтверждения почты

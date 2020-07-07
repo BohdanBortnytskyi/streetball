@@ -13,6 +13,11 @@
       header("Location: /login.php");
     }
 
+    // если не задан гет-запрос, то переадресовываем на страницу Календарь
+    if(!isset($_GET["event_id"])) {
+      header("Location: /calendar.php");
+    }
+
     // Head
     include $_SERVER['DOCUMENT_ROOT'] . '/parts/header.php';
   ?>
@@ -40,7 +45,7 @@
               <section class="py-4 py-lg-5">
                 <h1 class="display-4 mb-3">Команда зарегистрирована!</h1>
                 <p class="lead">
-                  Желаем удачи на турнире "<?php echo $event['name'] ?>"!
+                  Желаем удачи на турнире <a href="events-single.php?id=<?php echo $event['id']; ?>"><?php echo $event['name']; ?></a>!
                 </p>
               </section>
             </div>

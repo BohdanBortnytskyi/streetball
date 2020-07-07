@@ -7103,14 +7103,17 @@ a.text-dark:hover, a.text-dark:focus {
     .avatar.bg-primary i {
       font-size: 1rem; }
   .avatar.avatar-lg {
-    width: 3rem;
-    height: 3rem; }
+    object-fit: cover;
+    width: 5rem;
+    height: 5rem; }
   .avatar.avatar-sm {
-    width: 1.5rem;
-    height: 1.5rem; }
+    object-fit: cover;
+    width: 2.5rem;
+    height: 2.5rem; }
 
 @media (min-width: 992px) {
   .avatar.avatar-lg {
+    object-fit: cover;
     width: 8.5rem;
     height: 8.5rem; } }
 
@@ -8646,6 +8649,7 @@ label[class*='col'] {
   .page-header {
     padding-top: 3rem; }
     .page-header .avatars .avatar {
+      object-fit: cover;
       width: 2.625rem;
       height: 2.625rem; } }
 

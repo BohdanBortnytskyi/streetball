@@ -181,7 +181,7 @@
                   <?php
                     $i = 0;
                     // выводим список юзеров
-                    $sql = "SELECT * FROM players WHERE verified=1"; // запрос к БД
+                    $sql = "SELECT * FROM players WHERE verified=1 AND lastName!=''"; // запрос к БД
                     $result = mysqli_query($connect, $sql); // выполнение запроса к БД
                     $players_number = mysqli_num_rows($result); // количество записей в таблице users
                     // выводим всех юзеров

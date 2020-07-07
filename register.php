@@ -53,7 +53,7 @@
           <a href="<?php echo $siteURL; ?>/resend.php">отправить повторно</a></div>   
     <?php
           $link = "Подтверите регистрацию, перейдя по ссылке " . $siteURL . "/register.php?u_code=$u_code";
-          mail($_POST['email'], 'Регистрация на платформе УСЛ 3х3', $link);
+          mail($_POST['email'], 'Регистрация на платформе УСЛ 3х3', $link, "From: usl3x3@gmail.com");
         }
 
       } else {

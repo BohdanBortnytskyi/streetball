@@ -27,6 +27,7 @@ function addPlayer(element) {
   var playerName = element.dataset.playername; //
   var playerPhoto = element.dataset.playerphoto;
 
+  // берем скрытые инпуты с айди игроков
   var inputPlayer1 = document.querySelector("#input-player1");
   var inputPlayer2 = document.querySelector("#input-player2");
   var inputPlayer3 = document.querySelector("#input-player3");

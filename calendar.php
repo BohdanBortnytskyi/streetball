@@ -39,7 +39,7 @@
                   <div class="col-auto">
                     <h1>Календарь турниров</h1>
                   </div>
-                  <form class="col-md-auto">
+                  <!-- <form class="col-md-auto">
                     <div class="input-group input-group-round">
                       <div class="input-group-prepend">
                         <span class="input-group-text">
@@ -48,16 +48,17 @@
                       </div>
                       <input type="search" class="form-control filter-list-input" placeholder="Поиск по турнирам" aria-label="Поиск по турнирам">
                     </div>
-                  </form>
+                  </form> -->
                 </div>
                  <table class="table">
                 <thead>
                   <tr>
                     <th scope="col">#</th>
                     <th scope="col">Название</th>
-                    <th scope="col">Дата и время</th>
-                    <th scope="col">Организатор</th>
+                    <th scope="col">Дата</th>
+                    <th scope="col">Город</th>
                     <th scope="col">Команд</th>
+                    <th scope="col">Регистрация</th>
                   </tr>
                 </thead>
                  <tbody>
@@ -73,14 +74,8 @@
                       <td><?php echo $row["id"] ?></td><!-- выводим ай ди турниров -->
                       <td><a href="/events-single.php?id=<?php echo $row['id']; ?>"><?php echo $row["name"] ?></a></td><!-- выводим имена турниров -->
                       <td><?php echo $row["date"] ?></td><!-- выводим даты и время турниров -->
-                    <?php
-                      // Делаем запрос на вывод организаторов турниров
-                      $sqlOrg = "SELECT * FROM organizers WHERE id=" . $row['organizerID'];
-                      $resultOrg = $connect->query($sqlOrg);
-                      // Запускаем цикл на вывод организаторов турниров
-                      while($org = mysqli_fetch_assoc($resultOrg)) {
-                    ?>
-                        <td><?php echo $org['firstName']; ?>&nbsp;<?php echo $org['lastName']; ?></td><!-- выводим имена организаторов турниров -->
+                    
+                      <td><?php echo $row["city"] ?></td><!-- выводим название турниров -->
                       <?php
                         // Делаем запрос на вывод колличества команд в турнирах
                         $sqlTeams = "SELECT * FROM teams WHERE event_id =" . $row["id"];
@@ -107,7 +102,6 @@
                         </tr>
                     <?php
                     }
-                  }
                     ?>
                   </div>
                 </div>

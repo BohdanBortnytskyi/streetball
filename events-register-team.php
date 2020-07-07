@@ -20,27 +20,31 @@
     //if(isset($_GET["event_id"])) {
       if(isset($_POST) and $_SERVER["REQUEST_METHOD"] == "POST") {
 
-        $sql = "INSERT INTO teams (name, event_id, player1, player2, player3, player4) VALUES ('" . $_POST["team-name"] . "', '" . $_POST["event_id"] . "', '" . $_POST["player1"] . "', '" . $_POST["player2"] . "', '" . $_POST["player3"] . "', '" . $_POST["player4"] . "')";
+        if($_POST["player1"] != "" and $_POST["player2"] != "" and $_POST["player3"] !="") {
+          $sql = "INSERT INTO teams (name, event_id, player1, player2, player3, player4) VALUES ('" . $_POST["team-name"] . "', '" . $_POST["event_id"] . "', '" . $_POST["player1"] . "', '" . $_POST["player2"] . "', '" . $_POST["player3"] . "', '" . $_POST["player4"] . "')";
 
-        if($connect->query($sql)) {
+          if($connect->query($sql)) {
 
-          // выбираем ивент по айди
-          $sql = "SELECT * FROM calendar WHERE id =" . $_POST["event_id"];
-          $result = $connect->query($sql);
-          $event = mysqli_fetch_assoc($result);
+            // выбираем ивент по айди
+            $sql = "SELECT * FROM calendar WHERE id =" . $_POST["event_id"];
+            $result = $connect->query($sql);
+            $event = mysqli_fetch_assoc($result);
 
-          // выбираем игроков по айди и отправляем им имейлы
-          $sql = "SELECT * FROM players WHERE id =" . $_POST["player1"];
-          $result = $connect->query($sql);
-          $player = mysqli_fetch_assoc($result); 
+            // выбираем игроков по айди и отправляем им имейлы
+            $sql = "SELECT * FROM players WHERE id =" . $_POST["player1"];
+            $result = $connect->query($sql);
+            $player = mysqli_fetch_assoc($result); 
 
-          mail($player["email"], 'Регистрация на турнир УСЛ 3х3', 'Вы зарегистрированы на турнир ' . $event["name"] . ' в составе команды ' . $_POST["team-name"]);
-          
-          // переадресация на страницу успешной регистрации
-          header("Location: /events-register-success.php?event_id=" . $_POST["event_id"]);
-          // echo "<div class='alert alert-primary' role='alert'>Команда зарегистрирована</div>";
+            mail($player["email"], 'Регистрация на турнир УСЛ 3х3', 'Вы зарегистрированы на турнир ' . $event["name"] . ' в составе команды ' . $_POST["team-name"], "From: usl3x3@gmail.com");
+            
+            // переадресация на страницу успешной регистрации
+            header("Location: /events-register-success.php?event_id=" . $_POST["event_id"]);
+            // echo "<div class='alert alert-primary' role='alert'>Команда зарегистрирована</div>";
+          } else {
+            echo "<div class='alert alert-danger' role='alert'>Ошибка базы данных</div>";
+          }
         } else {
-          echo "<div class='alert alert-danger' role='alert'>Ошибка базы данных</div>";
+          header("Location: /events-register-fail.php?event_id=" . $_POST["event_id"]);
         }
 
       }
@@ -177,7 +181,7 @@
                   <?php
                     $i = 0;
                     // выводим список юзеров
-                    $sql = "SELECT * FROM players WHERE id!=" . $_COOKIE["player_id"] . " AND verified=1"; // запрос к БД
+                    $sql = "SELECT * FROM players WHERE verified=1"; // запрос к БД
                     $result = mysqli_query($connect, $sql); // выполнение запроса к БД
                     $players_number = mysqli_num_rows($result); // количество записей в таблице users
                     // выводим всех юзеров

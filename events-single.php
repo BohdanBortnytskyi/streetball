@@ -155,8 +155,10 @@
                   <!--end of content list head-->
                   <?php
                   // Делаем запрос на вывод команд что участвуют в данном турнире
-                  $sql = "SELECT * FROM teams WHERE categoryID =" . $_GET["id"];
+                  $sql = "SELECT * FROM teams WHERE event_id =" . $_GET["id"];
                   $resultNT = $connect->query($sql);
+                  
+                  // выводим список команд
                   while($teams = mysqli_fetch_assoc($resultNT)) {
                   ?>
                   <div class="content-list-body row">
@@ -171,8 +173,68 @@
                           </div>
                           <div class="card-meta">
                             <div class="d-flex align-items-center">
-                              <i class="material-icons">sports_basketball</i>
-                              <span><?php echo $teams['city']; ?></span>
+                              <ul class="avatars">
+                                <?php 
+                                  // получаем первого игрока
+                                  $sql = "SELECT * FROM players WHERE id =" . $teams['player1'];
+                                  $result = $connect->query($sql);
+                                  // если он указан в заявке, то выводим его данные
+                                  if($player1 = mysqli_fetch_assoc($result)) {
+                                ?>
+                                  <li>
+                                    <a href="player-profile.php?id=<?php echo $player1['id']; ?>" data-toggle="tooltip" title="" data-original-title="<?php echo $player1['firstName'] . " " . $player1['lastName']; ?>">
+                                      <img alt="<?php echo $player1['firstName'] . " " . $player1['lastName']; ?>" class="avatar filter-by-alt" src="assets/img/avatars/<?php echo $player1['photo']; ?>" data-filter-by="alt">
+                                    </a>
+                                  </li>
+                                <?php
+                                  }
+                                ?>
+                                <?php 
+                                  // получаем второго игрока
+                                  $sql = "SELECT * FROM players WHERE id =" . $teams['player2'];
+                                  $result = $connect->query($sql);
+                                  // если он указан в заявке, то выводим его данные
+                                  if($player2 = mysqli_fetch_assoc($result)) {
+                                ?>
+                                  <li>
+                                    <a href="player-profile.php?id=<?php echo $player2['id']; ?>" data-toggle="tooltip" title="" data-original-title="<?php echo $player2['firstName'] . " " . $player2['lastName']; ?>">
+                                      <img alt="<?php echo $player2['firstName'] . " " . $player2['lastName']; ?>" class="avatar filter-by-alt" src="assets/img/avatars/<?php echo $player2['photo']; ?>" data-filter-by="alt">
+                                    </a>
+                                  </li>
+                                <?php
+                                  }
+                                ?>
+                                <?php 
+                                  // получаем третьего игрока
+                                  $sql = "SELECT * FROM players WHERE id =" . $teams['player3'];
+                                  $result = $connect->query($sql);
+                                  // если он указан в заявке, то выводим его данные
+                                  if($player3 = mysqli_fetch_assoc($result)) {
+                                ?>
+                                  <li>
+                                    <a href="player-profile.php?id=<?php echo $player3['id']; ?>" data-toggle="tooltip" title="" data-original-title="<?php echo $player3['firstName'] . " " . $player3['lastName']; ?>">
+                                      <img alt="<?php echo $player3['firstName'] . " " . $player3['lastName']; ?>" class="avatar filter-by-alt" src="assets/img/avatars/<?php echo $player3['photo']; ?>" data-filter-by="alt">
+                                    </a>
+                                  </li>
+                                <?php
+                                  }
+                                ?>
+                                <?php 
+                                  // получаем четвертого игрока
+                                  $sql = "SELECT * FROM players WHERE id =" . $teams['player4'];
+                                  $result = $connect->query($sql);
+                                  // если он указан в заявке, то выводим его данные
+                                  if($player4 = mysqli_fetch_assoc($result)) {
+                                ?>
+                                  <li>
+                                    <a href="player-profile.php?id=<?php echo $player4['id']; ?>" data-toggle="tooltip" title="" data-original-title="<?php echo $player4['firstName'] . " " . $player4['lastName']; ?>">
+                                      <img alt="<?php echo $player4['firstName'] . " " . $player4['lastName']; ?>" class="avatar filter-by-alt" src="assets/img/avatars/<?php echo $player4['photo']; ?>" data-filter-by="alt">
+                                    </a>
+                                  </li>
+                                <?php
+                                  }
+                                ?>
+                              </ul>
                             </div>
                           </div>
                         </div>

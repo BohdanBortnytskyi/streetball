@@ -50,18 +50,18 @@
                     </div>
                   </form> -->
                 </div>
-                 <table class="table">
-                <thead>
-                  <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Название</th>
-                    <th scope="col">Дата</th>
-                    <th scope="col">Город</th>
-                    <th scope="col">Команд</th>
-                    <th scope="col">Регистрация</th>
-                  </tr>
-                </thead>
-                 <tbody>
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th scope="col">#</th>
+                      <th scope="col">Название</th>
+                      <th scope="col">Дата</th>
+                      <th scope="col">Город</th>
+                      <th scope="col">Команд</th>
+                      <th scope="col">Регистрация</th>
+                    </tr>
+                  </thead>
+                  <tbody>
                     <?php
                       // создаем запрос для получения всех events
                       $sql = "SELECT * FROM calendar";
@@ -71,38 +71,41 @@
                       // и пока row не равен NULL выводим данные о event
                       while($row = mysqli_fetch_assoc($result)) {
                     ?>
-                      <td><?php echo $row["id"] ?></td><!-- выводим ай ди турниров -->
-                      <td><a href="/events-single.php?id=<?php echo $row['id']; ?>"><?php echo $row["name"] ?></a></td><!-- выводим имена турниров -->
-                      <td><?php echo $row["date"] ?></td><!-- выводим даты и время турниров -->
-                    
-                      <td><?php echo $row["city"] ?></td><!-- выводим название турниров -->
-                      <?php
-                        // Делаем запрос на вывод колличества команд в турнирах
-                        $sqlTeams = "SELECT * FROM teams WHERE event_id =" . $row["id"];
-                        $resultTeams = $connect->query($sqlTeams);
-                        // создаем переменную с колличеством команд
-                        $count = mysqli_num_rows($resultTeams);
-                      ?>
-                        <td><?php echo $count ?></td><!-- выводим количество команд в турнирах -->
-                      <?php
-                        // Если статус рваен 1
-                        if ($row["status"] == 1) {
-                      ?>
-                        <td><a href="/events-single.php?id=<?php echo $row['id']; ?>" type="button" class="btn btn-primary btn-sm">Регистрация</a><!--то делаем кнопку для регистрации на турниры -->
-                        </td>
-                      <?php
-                        // иначе
-                        } else {
-                      ?>
-                        <td><button type="button" title="" class="btn btn-primary btn-sm" disabled>Регистрация</button><!-- делаем не активную кнопку для регистрации -->
-                        </td>
-                        <?php
-                        }
-                      ?>
+                        <tr>
+                          <td><?php echo $row["id"] ?></td><!-- выводим ай ди турниров -->
+                          <td><a href="/events-single.php?id=<?php echo $row['id']; ?>"><?php echo $row["name"] ?></a></td><!-- выводим имена турниров -->
+                          <td><?php echo $row["date"] ?></td><!-- выводим даты и время турниров -->
+                        
+                          <td><?php echo $row["city"] ?></td><!-- выводим название турниров -->
+                          <?php
+                            // Делаем запрос на вывод колличества команд в турнирах
+                            $sqlTeams = "SELECT * FROM teams WHERE event_id =" . $row["id"];
+                            $resultTeams = $connect->query($sqlTeams);
+                            // создаем переменную с колличеством команд
+                            $count = mysqli_num_rows($resultTeams);
+                          ?>
+                            <td><?php echo $count ?></td><!-- выводим количество команд в турнирах -->
+                          <?php
+                            // Если статус рваен 1
+                            if ($row["status"] == 1) {
+                          ?>
+                            <td><a href="/events-single.php?id=<?php echo $row['id']; ?>" type="button" class="btn btn-primary btn-sm">Регистрация</a><!--то делаем кнопку для регистрации на турниры -->
+                            </td>
+                          <?php
+                            // иначе
+                            } else {
+                          ?>
+                            <td><button type="button" title="" class="btn btn-primary btn-sm" disabled>Регистрация</button><!-- делаем не активную кнопку для регистрации -->
+                            </td>
+                            <?php
+                            }
+                          ?>
                         </tr>
-                    <?php
-                    }
-                    ?>
+                      <?php
+                      }
+                      ?>
+                    </tbody>
+                  </table>
                   </div>
                 </div>
               </div>

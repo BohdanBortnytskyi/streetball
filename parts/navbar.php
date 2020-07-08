@@ -38,6 +38,10 @@
       <li class="nav-item">
         <a class="nav-link" href="/">Главная</a>
       </li>
+      
+      <li class="nav-item">
+        <a class="nav-link" href="/players.php">Игроки УСЛ 3х3</a>
+      </li>
 
       <li class="nav-item">
         <a class="nav-link" href="/calendar.php">Календарь турниров</a>

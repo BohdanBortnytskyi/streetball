@@ -111,8 +111,6 @@
               </div>
           </div>
         </div>
-      </div>
-    </div>
 
     <!-- Required vendor scripts (Do not remove) -->
     <script type="text/javascript" src="assets/js/jquery.min.js"></script>

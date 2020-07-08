@@ -86,11 +86,14 @@
     <div class=" d-lg-block w-100">
       <ul class="nav nav-small flex-column mt-2">
         <li class="nav-item">
+          <a href="support.php" class="nav-link">Саппорт</a>
+        </li>
+        <!-- <li class="nav-item">
           <a href="#" class="nav-link">О платформе</a>
         </li>
         <li class="nav-item">
           <a href="#" class="nav-link">Документация</a>
-        </li>
+        </li> -->
         <li class="nav-item">
           <a href="http://streetball.in.ua/" class="nav-link">Сайт УСЛ 3х3</a>
         </li>

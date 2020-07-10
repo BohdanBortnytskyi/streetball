@@ -53,7 +53,6 @@
                 <table class="table">
                   <thead>
                     <tr>
-                      <th scope="col">#</th>
                       <th scope="col">Название</th>
                       <th scope="col">Дата</th>
                       <th scope="col">Город</th>
@@ -67,50 +66,36 @@
                       $sql = "SELECT * FROM calendar";
                       // заносим в переменную результаты запроса
                       $result = $connect->query($sql);
-                      // запускаем цикл, присваиваем переменной row строку из переменной $result
-                      // и пока row не равен NULL выводим данные о event
+                      // запускаем цикл вывода списка турниров
                       while($row = mysqli_fetch_assoc($result)) {
+                        // Если статус равен 1, то выводи турнир
+                        if ($row["status"] == 1) {
                     ?>
-                        <tr>
-                          <td><?php echo $row["id"] ?></td><!-- выводим ай ди турниров -->
-                          <td><a href="/events-single.php?id=<?php echo $row['id']; ?>"><?php echo $row["name"] ?></a></td><!-- выводим имена турниров -->
-                          <td><?php echo $row["date"] ?></td><!-- выводим даты и время турниров -->
-                        
-                          <td><?php echo $row["city"] ?></td><!-- выводим название турниров -->
-                          <?php
-                            // Делаем запрос на вывод колличества команд в турнирах
-                            $sqlTeams = "SELECT * FROM teams WHERE event_id =" . $row["id"];
-                            $resultTeams = $connect->query($sqlTeams);
-                            // создаем переменную с колличеством команд
-                            $count = mysqli_num_rows($resultTeams);
-                          ?>
-                            <td><?php echo $count ?></td><!-- выводим количество команд в турнирах -->
-                          <?php
-                            // Если статус рваен 1
-                            if ($row["status"] == 1) {
-                          ?>
-                            <td><a href="/events-single.php?id=<?php echo $row['id']; ?>" type="button" class="btn btn-primary btn-sm">Регистрация</a><!--то делаем кнопку для регистрации на турниры -->
-                            </td>
-                          <?php
-                            // иначе
-                            } else {
-                          ?>
-                            <td><button type="button" title="" class="btn btn-primary btn-sm" disabled>Регистрация</button><!-- делаем не активную кнопку для регистрации -->
-                            </td>
+                          <tr>
+                            <td><a href="/events-single.php?id=<?php echo $row['id']; ?>"><?php echo $row["name"] ?></a></td><!-- выводим имена турниров -->
+                            <td><?php echo $row["date"] ?></td>
+                            <td><?php echo $row["city"] ?></td>
                             <?php
-                            }
-                          ?>
-                        </tr>
-                      <?php
+                              // Делаем запрос на вывод колличества команд в турнирах
+                              $sqlTeams = "SELECT * FROM teams WHERE event_id =" . $row["id"];
+                              $resultTeams = $connect->query($sqlTeams);
+                              // создаем переменную с колличеством команд
+                              $count = mysqli_num_rows($resultTeams);
+                            ?>
+                              <td><?php echo $count ?></td><!-- выводим количество команд в турнирах -->
+                              <td><a href="/events-single.php?id=<?php echo $row['id']; ?>" type="button" class="btn btn-primary btn-sm">Регистрация</a></td>
+                          </tr>
+                    <?php
+                        }
                       }
-                      ?>
-                    </tbody>
-                  </table>
-                  </div>
-                </div>
+                    ?>
+                  </tbody>
+                </table>
               </div>
+            </div>
           </div>
-        </div>
+      </div>
+    </div>
 
     <!-- Required vendor scripts (Do not remove) -->
     <script type="text/javascript" src="assets/js/jquery.min.js"></script>

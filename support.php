@@ -37,12 +37,12 @@
                 <div class="col-12">
                   <section class="py-4 py-lg-5">
                     <div class="mb-3 d-flex">
-                      <img alt="УСЛ 3x3" src="assets/img/logo-color.png" class="avatar avatar-lg mr-1">
+                      <img alt="УСЛ 3x3" src="assets/img/logo-go.png" class="avatar avatar-lg mr-1">
                       <div>
                         <span class="badge badge-success">alpha</span>
                       </div>
                     </div>
-                    <h1 class="display-4 mb-3">Саппорт</h1>
+                    <h1 class="display-4 mb-3">Поддержка</h1>
                     <p class="lead">
                       Друзья, платформа регистрации и рейтинга GO.Streetball начала работу в режиме альфа-тестирования.<br>
                       Мы просим вас помочь усовершенствовать её работу и сообщать нам о любых багах и ошибках, с которыми вы столкнётесь при регистрации на турниры УСЛ 3х3.

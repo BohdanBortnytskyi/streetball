@@ -40,15 +40,15 @@
       </li>
       
       <li class="nav-item">
-        <a class="nav-link" href="/players.php">Игроки УСЛ 3х3</a>
+        <a class="nav-link" href="/players.php">Игроки</a>
       </li>
 
       <li class="nav-item">
-        <a class="nav-link" href="/calendar.php">Календарь турниров</a>
+        <a class="nav-link" href="/calendar.php">Турниры</a>
       </li>
 
       <li class="nav-item">
-        <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-2" aria-controls="submenu-2">Рейтинг игроков</a>
+        <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-2" aria-controls="submenu-2">Рейтинг</a>
         <div id="submenu-2" class="collapse">
           <ul class="nav nav-small flex-column">
             <li class="nav-item">
@@ -64,7 +64,7 @@
         </div>
       </li>
 
-      <li class="nav-item">
+      <!-- <li class="nav-item">
         <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-3" aria-controls="submenu-3">Рейтинг команд</a>
         <div id="submenu-3" class="collapse">
           <ul class="nav nav-small flex-column">
@@ -79,14 +79,14 @@
             </li>
           </ul>
         </div>
-      </li>
+      </li> -->
 
     </ul>
     <hr>
     <div class=" d-lg-block w-100">
       <ul class="nav nav-small flex-column mt-2">
         <li class="nav-item">
-          <a href="support.php" class="nav-link">Саппорт</a>
+          <a href="support.php" class="nav-link">Поддержка</a>
         </li>
         <!-- <li class="nav-item">
           <a href="#" class="nav-link">О платформе</a>
